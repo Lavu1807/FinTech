@@ -18,7 +18,7 @@ def _check_export_dir() -> bool:
 
 def _check_llm() -> bool:
     # In a real scenario, we might make a fast ping to the LLM
-    return bool(settings.GEMINI_API_KEY)
+    return bool(getattr(settings, "MISTRAL_API_KEY", None))
 
 
 @router.get("", response_model=HealthResponse)

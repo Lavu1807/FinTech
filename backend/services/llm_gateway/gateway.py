@@ -35,20 +35,9 @@ class LLMGateway:
         """
         Initializes the underlying LLM provider from settings.
         """
-        provider_name = getattr(settings, "LLM_PROVIDER", "gemini").lower()
+        provider_name = getattr(settings, "LLM_PROVIDER", "mistral").lower()
 
-        if provider_name == "gemini":
-            if not settings.GEMINI_API_KEY:
-                logger.error(
-                    "GEMINI_API_KEY is missing. LLM Gateway cannot authenticate."
-                )
-                raise LLMAuthenticationError("Missing Gemini API key in settings.")
-            api_key = (
-                settings.GEMINI_API_KEY.get_secret_value()
-                if hasattr(settings.GEMINI_API_KEY, "get_secret_value")
-                else settings.GEMINI_API_KEY
-            )
-        elif provider_name == "mistral":
+        if provider_name == "mistral":
             if not settings.MISTRAL_API_KEY:
                 logger.error(
                     "MISTRAL_API_KEY is missing. LLM Gateway cannot authenticate."

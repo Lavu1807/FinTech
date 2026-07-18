@@ -5,7 +5,7 @@ from pydantic import BaseModel, Field
 class HealthResponse(BaseModel):
     status: str = Field(..., description="Overall health status")
     service: str = Field(..., description="Service name")
-    llm_available: bool = Field(..., description="Is the Gemini API reachable?")
+    llm_available: bool = Field(..., description="Is the Mistral API reachable?")
     exports_dir_writable: bool = Field(..., description="Can we write to exports?")
 
 

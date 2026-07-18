@@ -44,56 +44,7 @@ class BaseLLMProvider(ABC):
         pass
 
 
-class GeminiProvider(BaseLLMProvider):
-    """
-    Concrete implementation of the Gemini LLM provider.
-    """
 
-    def __init__(self, api_key: str, model_name: str = "gemini-2.5-flash"):
-        from langchain_google_genai import ChatGoogleGenerativeAI
-
-        self.model_name = model_name
-        self._base_llm = ChatGoogleGenerativeAI(
-            model=model_name,
-            google_api_key=api_key,
-            max_retries=0,  # Native retries disabled to allow gateway to control backoff
-        )
-
-    def get_provider_name(self) -> str:
-        return f"Gemini ({self.model_name})"
-
-    def _get_configured_llm(
-        self, temperature: float, max_tokens: Optional[int], timeout: Optional[int]
-    ) -> BaseChatModel:
-        bind_kwargs: Dict[str, Any] = {"temperature": temperature}
-        if max_tokens is not None:
-            bind_kwargs["max_output_tokens"] = max_tokens
-        if timeout is not None:
-            bind_kwargs["timeout"] = timeout
-        return self._base_llm.bind(**bind_kwargs)
-
-    def invoke(
-        self,
-        prompt: str,
-        temperature: float = 0.0,
-        max_tokens: Optional[int] = None,
-        timeout: Optional[int] = None,
-    ) -> str:
-        configured_llm = self._get_configured_llm(temperature, max_tokens, timeout)
-        response = configured_llm.invoke(prompt)
-        return response.content if hasattr(response, "content") else str(response)
-
-    def invoke_structured(
-        self,
-        prompt: str,
-        output_schema: Type[T],
-        temperature: float = 0.0,
-        max_tokens: Optional[int] = None,
-        timeout: Optional[int] = None,
-    ) -> T:
-        configured_llm = self._get_configured_llm(temperature, max_tokens, timeout)
-        structured_llm = configured_llm.with_structured_output(output_schema)
-        return structured_llm.invoke(prompt)
 
 
 class MistralProvider(BaseLLMProvider):
@@ -185,9 +136,7 @@ class ProviderFactory:
     @staticmethod
     def create_provider(provider_name: str, api_key: str) -> BaseLLMProvider:
         name = provider_name.lower()
-        if name == "gemini":
-            return GeminiProvider(api_key=api_key)
-        elif name == "mistral":
+        if name == "mistral":
             return MistralProvider(api_key=api_key)
         elif name == "openai":
             return OpenAIProvider()

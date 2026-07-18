@@ -16,7 +16,7 @@ The Planner Agent acts as the strategic brain of the workflow. Instead of genera
 - `state["workflow_tracking"]["required_agents"]`
 
 ## LLM Strategy
-This node utilizes the `gemini-2.5-flash` model via the `LLMGateway` utilizing `Instructor` to ensure the LLM strictly adheres to the `AnalysisPlan` Pydantic model. 
+This node utilizes the `mistral-large-latest` model via the `LLMGateway` utilizing `Instructor` to ensure the LLM strictly adheres to the `AnalysisPlan` Pydantic model. 
 
 ## Failure Handling
 If the LLM fails to return a valid JSON plan, the request is retried up to 3 times. If it continually fails, a fallback deterministic heuristic plan is generated based on standard grouping methodologies.

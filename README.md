@@ -123,7 +123,7 @@ FinTech/
 Create a `.env` file in the root directory:
 
 ```env
-GEMINI_API_KEY=your_google_gemini_api_key
+MISTRAL_API_KEY=your_mistral_api_key
 ENVIRONMENT=development
 LOG_LEVEL=INFO
 EXPORTS_DIR=backend/exports

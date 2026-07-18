@@ -30,13 +30,8 @@ def create_app() -> FastAPI:
 
         # Validate API Key for Production
         if settings.APP_ENV == "production":
-            provider = getattr(settings, "LLM_PROVIDER", "gemini").lower()
-            if provider == "gemini" and not settings.GEMINI_API_KEY:
-                logger.error(
-                    "CRITICAL: GEMINI_API_KEY is missing in production environment!"
-                )
-                raise RuntimeError("Missing GEMINI_API_KEY in production.")
-            elif provider == "mistral" and not settings.MISTRAL_API_KEY:
+            provider = getattr(settings, "LLM_PROVIDER", "mistral").lower()
+            if provider == "mistral" and not getattr(settings, "MISTRAL_API_KEY", None):
                 logger.error(
                     "CRITICAL: MISTRAL_API_KEY is missing in production environment!"
                 )

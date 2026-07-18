@@ -46,9 +46,7 @@ class Settings(BaseSettings):
     POSTGRES_PORT: int = Field(default=5432, description="PostgreSQL port")
 
     # LLM Settings
-    GEMINI_API_KEY: Optional[SecretStr] = Field(
-        default=None, description="Gemini API Key"
-    )
+
     MISTRAL_API_KEY: Optional[SecretStr] = Field(
         default=None, description="Mistral API Key"
     )
