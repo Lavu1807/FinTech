@@ -55,20 +55,17 @@ graph TD
 
 ## 📸 Screenshots
 
-### 1. Architecture Pipeline
-![Architecture](assets/architecture.png)
-
-### 2. Analysis Charts
+### 1. Analysis Charts
 ![Chart 1](assets/chart1.png)
 ![Chart 2](assets/chart2.png)
 
-### 3. Executive Dashboard
+### 2. Executive Dashboard
 ![Dashboard Preview](assets/dashboard.png)
 
-### 4. PDF Consulting Report
+### 3. PDF Consulting Report
 ![PDF Preview](assets/pdf.png)
 
-### 5. Interactive OpenAPI Swagger
+### 4. Interactive OpenAPI Swagger
 ![Swagger API](assets/swagger.png)
 
 ## 🤖 Agent Pipeline
