@@ -41,5 +41,4 @@ backend/exports/packages/
 backend/.env
 exports/
 archive*
-test_*.py
 *.pdf
