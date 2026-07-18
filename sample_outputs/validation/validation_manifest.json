@@ -1,0 +1,9 @@
+{
+    "total_insights_validated": 19,
+    "overall_status": "FAILED",
+    "exported_files": [
+        "E:\\GIT PROJECTS\\FinTech\\backend\\exports\\validation\\validation_results.json",
+        "E:\\GIT PROJECTS\\FinTech\\backend\\exports\\validation\\validation_summary.json",
+        "E:\\GIT PROJECTS\\FinTech\\backend\\exports\\validation\\unsupported_claims.json"
+    ]
+}

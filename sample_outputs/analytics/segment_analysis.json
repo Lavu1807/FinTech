@@ -1,0 +1,68 @@
+{
+    "Region": {
+        "Top Performers": {
+            "North": 920775.0,
+            "South": 901139.0,
+            "East": 752297.0,
+            "West": 608592.0
+        },
+        "Bottom Performers": {
+            "North": 920775.0,
+            "South": 901139.0,
+            "East": 752297.0,
+            "West": 608592.0
+        },
+        "Largest Contributor %": 28.92968870520733,
+        "Smallest Contributor %": 19.121258840085297,
+        "Top vs Next % Difference": 2.1790201067759805
+    },
+    "Category": {
+        "Top Performers": {
+            "Electronics": 1213764.0,
+            "Office": 1044333.0,
+            "Furniture": 924706.0
+        },
+        "Bottom Performers": {
+            "Electronics": 1213764.0,
+            "Office": 1044333.0,
+            "Furniture": 924706.0
+        },
+        "Largest Contributor %": 38.13506522395511,
+        "Smallest Contributor %": 29.05319619216144,
+        "Top vs Next % Difference": 16.223848140392004
+    },
+    "Product": {
+        "Top Performers": {
+            "Desk": 606728.0,
+            "Laptop": 495763.0,
+            "Tablet": 413501.0,
+            "Monitor": 381302.0,
+            "Paper": 371339.0
+        },
+        "Bottom Performers": {
+            "Paper": 371339.0,
+            "Phone": 304500.0,
+            "Printer": 291692.0,
+            "Table": 159226.0,
+            "Chair": 158752.0
+        },
+        "Largest Contributor %": 19.062694109563175,
+        "Smallest Contributor %": 4.98780477459648,
+        "Top vs Next % Difference": 22.38267075195204
+    },
+    "Customer_Segment": {
+        "Top Performers": {
+            "Consumer": 1345534.0,
+            "Corporate": 939522.0,
+            "Small Business": 897747.0
+        },
+        "Bottom Performers": {
+            "Consumer": 1345534.0,
+            "Corporate": 939522.0,
+            "Small Business": 897747.0
+        },
+        "Largest Contributor %": 42.27512667293578,
+        "Smallest Contributor %": 28.206175500023097,
+        "Top vs Next % Difference": 43.21474111303408
+    }
+}

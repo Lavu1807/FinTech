@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FinSight AI — Executive Report</title>
+    <style>
+        {{ css }}
+    </style>
+</head>
+<body>
+    <nav class="sidebar">
+        <h3>FinSight AI</h3>
+        <a href="#section-1">1. Executive Summary</a>
+        <a href="#section-2">2. Dataset Overview</a>
+        <a href="#section-3">3. Business Analytics</a>
+        <a href="#section-4">4. AI Insights</a>
+        <a href="#section-5">5. Validation Summary</a>
+        <a href="#section-6">6. Visualizations</a>
+        <a href="#section-7">7. Workflow Execution</a>
+        <a href="#section-8">8. Appendix</a>
+    </nav>
+
+    <div class="report-container">
+        {{ content }}
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // Assign section IDs to h2 elements
+            const headings = document.querySelectorAll('h2');
+            let sectionIndex = 0;
+            headings.forEach(h2 => {
+                sectionIndex++;
+                h2.id = 'section-' + sectionIndex;
+
+                // Group content between headings
+                const wrapper = document.createElement('div');
+                wrapper.className = 'section-content';
+
+                let sibling = h2.nextElementSibling;
+                while (sibling && sibling.tagName !== 'H2' && sibling.tagName !== 'H1' && sibling.tagName !== 'HR') {
+                    const next = sibling.nextElementSibling;
+                    wrapper.appendChild(sibling);
+                    sibling = next;
+                }
+
+                h2.parentNode.insertBefore(wrapper, h2.nextSibling);
+
+                // Collapsible click handler
+                h2.addEventListener('click', () => {
+                    h2.classList.toggle('collapsed');
+                    wrapper.classList.toggle('collapsed');
+                });
+            });
+
+            // Status badge injection
+            const cells = document.querySelectorAll('td');
+            cells.forEach(td => {
+                const text = td.textContent.trim();
+                if (text === 'PASSED') {
+                    td.innerHTML = '<span class="badge badge-passed">PASSED</span>';
+                } else if (text === 'FAILED') {
+                    td.innerHTML = '<span class="badge badge-failed">FAILED</span>';
+                } else if (text === 'WARNING') {
+                    td.innerHTML = '<span class="badge badge-warning">WARNING</span>';
+                } else if (text === 'COMPLETED') {
+                    td.innerHTML = '<span class="badge badge-passed">COMPLETED</span>';
+                }
+            });
+        });
+    </script>
+</body>
+</html>

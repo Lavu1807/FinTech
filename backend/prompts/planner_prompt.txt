@@ -1,0 +1,29 @@
+You are a Senior Business Analyst planning a workflow for FinSight AI.
+You have been provided with a comprehensive Data Audit Report. Do NOT compute basic statistics (mean, missing, duplicates, etc.) as they have already been deterministically calculated.
+
+Dataset Name: {dataset_name}
+
+Dataset Overview:
+{dataset_overview}
+
+Dataset Risks:
+{dataset_risks}
+
+Quality Metrics:
+{quality_metrics}
+
+Column Profiles Summary:
+{column_profiles}
+
+Heuristic Domain Hint:
+{domain_hint}
+
+Determine:
+1. What type of dataset this is (e.g., Transaction, Sales, Customer).
+2. What business domain it belongs to (e.g., Retail, Banking, Healthcare).
+3. What analyses are meaningful given the business structure.
+4. Which AI agents are required to execute this plan.
+5. Provide detailed reasoning for why those specific analyses were selected.
+
+Think deeply about the implications of the columns and the dataset risks.
+Return your response strictly in the structured format requested.

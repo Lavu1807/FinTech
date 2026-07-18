@@ -1,0 +1,121 @@
+Date,Region,Category,Product,Units_Sold,Revenue,Profit,Customer_Segment
+2025-01-01,West,Electronics,Laptop,38,40546,9385.15,Corporate
+2025-01-02,East,Electronics,Laptop,44,44132,4958.4,Consumer
+2025-01-03,North,Furniture,Desk,72,23472,7744.02,Consumer
+2025-01-04,North,Electronics,Tablet,18,20358,3164.45,Small Business
+2025-01-05,West,Electronics,Laptop,42,24780,5645.25,Corporate
+2025-01-06,East,Furniture,Table,7,1316,117.79,Small Business
+2025-01-07,West,Office,Monitor,14,7588,2434.51,Consumer
+2025-01-08,East,Office,Monitor,66,10824,3717.36,Small Business
+2025-01-09,South,Office,Paper,18,19782,6016.79,Consumer
+2025-01-10,West,Office,Paper,69,36018,6393.89,Consumer
+2025-01-11,North,Furniture,Chair,64,58432,8017.53,Small Business
+2025-01-12,North,Electronics,Tablet,40,16000,1739.6,Consumer
+2025-01-13,South,Electronics,Phone,30,14340,3824.01,Small Business
+2025-01-14,West,Office,Monitor,28,17780,1710.92,Corporate
+2025-01-15,North,Office,Paper,56,11312,1974.8,Corporate
+2025-01-16,North,Electronics,Laptop,30,18060,6111.39,Small Business
+2025-01-17,South,Furniture,Desk,54,39150,11237.79,Small Business
+2025-01-18,South,Electronics,Laptop,18,2772,666.31,Consumer
+2025-01-19,South,Office,Monitor,73,76066,11667.85,Small Business
+2025-01-20,South,Electronics,Tablet,28,26516,3314.56,Small Business
+2025-01-21,North,Furniture,Chair,6,6462,2021.33,Corporate
+2025-01-22,South,Electronics,Phone,71,12070,2151.65,Corporate
+2025-01-23,East,Office,Monitor,32,13632,4415.58,Small Business
+2025-01-24,North,Furniture,Desk,57,56943,11538.89,Corporate
+2025-01-25,South,Office,Paper,23,2760,606.23,Small Business
+2025-01-26,South,Office,Paper,72,84456,10504.31,Consumer
+2025-01-27,South,Office,Monitor,76,73264,12255.54,Corporate
+2025-01-28,South,Electronics,Laptop,22,23298,2235.2,Consumer
+2025-01-29,East,Office,Monitor,78,16146,2313.56,Small Business
+2025-01-30,East,Electronics,Laptop,55,51590,14995.32,Corporate
+2025-01-31,East,Furniture,Desk,67,63181,6870.77,Small Business
+2025-02-01,East,Furniture,Table,11,2310,384.03,Corporate
+2025-02-02,East,Furniture,Desk,5,2955,295.85,Corporate
+2025-02-03,East,Office,Printer,50,50350,12704.08,Consumer
+2025-02-04,South,Electronics,Tablet,77,55594,10727.64,Small Business
+2025-02-05,West,Furniture,Desk,63,35910,8026.7,Small Business
+2025-02-06,North,Furniture,Desk,75,12450,3738.8,Small Business
+2025-02-07,North,Furniture,Desk,63,55062,7304.93,Small Business
+2025-02-08,North,Furniture,Desk,9,3726,956.39,Small Business
+2025-02-09,East,Electronics,Tablet,5,4050,388.72,Small Business
+2025-02-10,North,Office,Printer,71,41180,6965.79,Consumer
+2025-02-11,West,Electronics,Laptop,45,15210,3003.04,Consumer
+2025-02-12,South,Office,Paper,29,7569,1009.54,Corporate
+2025-02-13,South,Office,Printer,59,27435,9275.52,Consumer
+2025-02-14,East,Electronics,Laptop,64,67328,6264.55,Consumer
+2025-02-15,North,Office,Printer,54,61830,7382.59,Corporate
+2025-02-16,East,Electronics,Laptop,46,18722,4281.64,Small Business
+2025-02-17,North,Office,Printer,44,5192,1549.53,Small Business
+2025-02-18,East,Electronics,Laptop,70,5670,1236.77,Corporate
+2025-02-19,South,Office,Monitor,7,4578,472.13,Small Business
+2025-02-20,West,Office,Paper,26,25246,5977.21,Consumer
+2025-02-21,South,Electronics,Laptop,69,22080,7350.47,Consumer
+2025-02-22,North,Electronics,Laptop,78,80496,23325.02,Corporate
+2025-02-23,South,Furniture,Chair,29,19517,5686.66,Consumer
+2025-02-24,North,Electronics,Tablet,79,38078,6943.87,Consumer
+2025-02-25,South,Furniture,Desk,30,12660,1954.07,Corporate
+2025-02-26,North,Furniture,Table,37,19203,4725.65,Corporate
+2025-02-27,North,Office,Monitor,31,24397,1964.44,Consumer
+2025-02-28,East,Office,Paper,28,24080,4271.26,Consumer
+2025-03-01,South,Office,Monitor,11,10549,1128.75,Consumer
+2025-03-02,West,Electronics,Tablet,15,14205,3311.63,Small Business
+2025-03-03,North,Furniture,Table,31,34472,3652.62,Corporate
+2025-03-04,North,Office,Monitor,8,5048,1629.85,Corporate
+2025-03-05,North,Office,Monitor,15,6285,1107.44,Small Business
+2025-03-06,East,Furniture,Chair,54,4428,669.92,Small Business
+2025-03-07,East,Electronics,Tablet,5,3950,764.73,Consumer
+2025-03-08,East,Office,Paper,27,24516,2543.51,Small Business
+2025-03-09,South,Electronics,Phone,20,11840,2349.13,Corporate
+2025-03-10,West,Furniture,Chair,29,23751,7286.36,Corporate
+2025-03-11,East,Electronics,Phone,33,14553,3691.79,Consumer
+2025-03-12,East,Electronics,Tablet,36,34056,3197.34,Consumer
+2025-03-13,West,Electronics,Tablet,23,20309,3685.34,Consumer
+2025-03-14,West,Electronics,Phone,34,32096,10512.52,Consumer
+2025-03-15,North,Furniture,Desk,73,77015,12393.91,Consumer
+2025-03-16,East,Office,Printer,55,35585,7895.64,Small Business
+2025-03-17,North,Furniture,Table,56,39312,6929.89,Corporate
+2025-03-18,East,Office,Monitor,48,20208,5528.27,Small Business
+2025-03-19,West,Electronics,Tablet,41,30709,9575.03,Corporate
+2025-03-20,North,Electronics,Laptop,42,20076,2863.7,Consumer
+2025-03-21,East,Furniture,Table,52,15548,2133.24,Corporate
+2025-03-22,West,Office,Printer,64,6400,2119.24,Consumer
+2025-03-23,North,Furniture,Chair,15,7410,2553.9,Consumer
+2025-03-24,South,Office,Paper,60,39180,13047.24,Consumer
+2025-03-25,West,Furniture,Chair,38,28918,9003.54,Consumer
+2025-03-26,West,Electronics,Phone,22,24068,7642.55,Consumer
+2025-03-27,South,Electronics,Phone,69,68034,13522.25,Consumer
+2025-03-28,West,Electronics,Laptop,52,5200,473.61,Corporate
+2025-03-29,South,Furniture,Chair,39,8814,1982.92,Corporate
+2025-03-30,West,Office,Monitor,68,56848,19281.86,Small Business
+2025-03-31,North,Electronics,Laptop,15,8235,1202.98,Consumer
+2025-04-01,North,Furniture,Desk,49,13279,4012.66,Consumer
+2025-04-02,East,Electronics,Tablet,36,24408,2526.58,Small Business
+2025-04-03,North,Furniture,Desk,34,40290,7582.62,Consumer
+2025-04-04,East,Furniture,Desk,61,30256,4627.39,Corporate
+2025-04-05,North,Office,Monitor,49,7399,1219.28,Small Business
+2025-04-06,West,Electronics,Tablet,18,9846,2697.28,Corporate
+2025-04-07,South,Office,Monitor,27,12312,1738.72,Corporate
+2025-04-08,South,Furniture,Table,70,32830,3329.73,Consumer
+2025-04-09,South,Electronics,Phone,64,58112,8590.76,Consumer
+2025-04-10,South,Electronics,Phone,75,22425,2889.4,Small Business
+2025-04-11,West,Furniture,Desk,49,43071,9277.17,Corporate
+2025-04-12,East,Office,Printer,18,17514,5559.62,Corporate
+2025-04-13,East,Furniture,Desk,24,11664,2996.67,Corporate
+2025-04-14,North,Furniture,Table,73,14235,3898.1,Small Business
+2025-04-15,West,Electronics,Phone,19,18107,4153.21,Corporate
+2025-04-16,South,Office,Printer,53,39591,4551.21,Corporate
+2025-04-17,South,Office,Monitor,18,18378,4485.74,Small Business
+2025-04-18,East,Furniture,Desk,79,45820,5888.76,Small Business
+2025-04-19,West,Office,Printer,7,6615,609.32,Corporate
+2025-04-20,West,Electronics,Phone,24,8376,2779.9,Consumer
+2025-04-21,West,Electronics,Tablet,59,60180,17293.34,Consumer
+2025-04-22,North,Electronics,Tablet,20,8300,1707.42,Consumer
+2025-04-23,East,Office,Paper,75,80625,9799.67,Consumer
+2025-04-24,South,Electronics,Laptop,48,47568,13239.23,Corporate
+2025-04-25,South,Electronics,Phone,51,7599,2515.37,Consumer
+2025-04-26,North,Electronics,Tablet,49,46942,15202.85,Small Business
+2025-04-27,West,Office,Paper,45,15795,4185.56,Consumer
+2025-04-28,North,Furniture,Desk,76,39824,7422.03,Corporate
+2025-04-29,West,Furniture,Chair,5,1020,186.44,Corporate
+2025-04-30,East,Electronics,Phone,14,12880,3976.19,Consumer

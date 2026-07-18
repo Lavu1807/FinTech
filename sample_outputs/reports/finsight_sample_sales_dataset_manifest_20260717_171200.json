@@ -1,0 +1,32 @@
+{
+    "workflow_id": "unknown",
+    "dataset_name": "finsight_sample_sales_dataset.csv",
+    "generated_at": "2026-07-17T17:12:00.874067",
+    "report_version": "2.0.0",
+    "workflow_version": "1.0.0",
+    "prompt_version": "v4.0",
+    "execution_time": 0.010129928588867188,
+    "chart_count": 0,
+    "validation_status": "FAILED",
+    "overall_confidence": 0.612,
+    "included_sections": [
+        "Executive Summary",
+        "Dataset Overview",
+        "Data Quality Assessment",
+        "Business KPIs",
+        "Trend Analysis",
+        "Segmentation Analysis",
+        "Detected Anomalies",
+        "Detected Risks",
+        "Business Opportunities",
+        "Recommendations",
+        "Next Best Actions",
+        "Validation Summary",
+        "Workflow Execution",
+        "Appendix"
+    ],
+    "generated_files": [
+        "backend\\exports\\reports\\finsight_sample_sales_dataset_report_20260717_171200.md",
+        "backend\\exports\\reports\\finsight_sample_sales_dataset_report_20260717_171200.html"
+    ]
+}

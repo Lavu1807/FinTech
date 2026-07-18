@@ -1,0 +1,22 @@
+{
+    "workflow_status": "COMPLETED_WITH_WARNINGS",
+    "execution_time": 14.236403,
+    "total_cost": 0.0,
+    "total_tokens": 0,
+    "total_llm_calls": 0,
+    "dataset_name": "finsight_sample_sales_dataset.csv",
+    "dataset_type": "Sales",
+    "business_domain": "Retail",
+    "planner_confidence": 0.98,
+    "completed_agents": [
+        "Data Auditor Agent",
+        "Planner Agent",
+        "Analytics Agent",
+        "Insight Agent",
+        "Validation Agent",
+        "Visualization Agent",
+        "Report Generator Agent"
+    ],
+    "failed_agents": [],
+    "warnings_count": 3
+}

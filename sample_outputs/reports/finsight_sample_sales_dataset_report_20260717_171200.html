@@ -1,0 +1,1124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FinSight AI — Executive Report</title>
+    <style>
+        /* FinSight AI â€” Enterprise Report Stylesheet */
+:root {
+    --primary: #1a365d;
+    --primary-light: #2b6cb0;
+    --accent: #38a169;
+    --danger: #e53e3e;
+    --warning: #d69e2e;
+    --text: #2d3748;
+    --text-muted: #718096;
+    --bg: #f7fafc;
+    --surface: #ffffff;
+    --border: #e2e8f0;
+    --hover: #edf2f7;
+    --sidebar-width: 260px;
+    --font: 'Segoe UI', -apple-system, BlinkMacSystemFont, Roboto, sans-serif;
+}
+
+/* === Layout === */
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+    font-family: var(--font);
+    line-height: 1.7;
+    color: var(--text);
+    background: var(--bg);
+    display: flex;
+}
+
+/* === Sidebar Navigation === */
+.sidebar {
+    position: fixed;
+    top: 0; left: 0;
+    width: var(--sidebar-width);
+    height: 100vh;
+    background: var(--primary);
+    color: #ffffff;
+    padding: 2rem 1rem;
+    overflow-y: auto;
+    z-index: 100;
+}
+
+.sidebar h3 {
+    font-size: 1rem;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: rgba(255,255,255,0.6);
+    margin-bottom: 1rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 1px solid rgba(255,255,255,0.15);
+}
+
+.sidebar a {
+    display: block;
+    color: rgba(255,255,255,0.85);
+    text-decoration: none;
+    padding: 0.5rem 0.75rem;
+    border-radius: 6px;
+    font-size: 0.9rem;
+    margin-bottom: 0.25rem;
+    transition: all 0.2s;
+}
+
+.sidebar a:hover {
+    background: rgba(255,255,255,0.12);
+    color: #ffffff;
+}
+
+/* === Main Content === */
+.report-container {
+    margin-left: var(--sidebar-width);
+    max-width: 960px;
+    padding: 3rem;
+    background: var(--surface);
+    min-height: 100vh;
+    box-shadow: 0 0 40px rgba(0,0,0,0.04);
+}
+
+/* === Typography === */
+h1 {
+    font-size: 2.2rem;
+    color: var(--primary);
+    border-bottom: 3px solid var(--primary);
+    padding-bottom: 0.5rem;
+    margin-bottom: 1.5rem;
+}
+
+h2 {
+    font-size: 1.5rem;
+    color: var(--primary);
+    border-bottom: 1px solid var(--border);
+    padding: 0.75rem 0 0.4rem;
+    margin-top: 2.5rem;
+    margin-bottom: 1rem;
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+h2:hover { color: var(--primary-light); }
+
+h2::after {
+    content: 'â–¾';
+    font-size: 1.2rem;
+    color: var(--text-muted);
+    transition: transform 0.3s;
+}
+
+h2.collapsed::after { transform: rotate(-90deg); }
+
+h3 { font-size: 1.15rem; color: var(--primary-light); margin-top: 1.5rem; margin-bottom: 0.75rem; }
+h4 { font-size: 1rem; color: var(--text); margin-top: 1rem; margin-bottom: 0.5rem; }
+
+p { margin-bottom: 0.75rem; }
+hr { border: 0; border-top: 1px solid var(--border); margin: 2rem 0; }
+
+/* === Lists === */
+ul { padding-left: 1.5rem; margin-bottom: 1rem; }
+li { margin-bottom: 0.4rem; }
+strong { color: #1a202c; }
+
+/* === Tables === */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 1rem 0 1.5rem;
+    font-size: 0.92rem;
+}
+
+th, td {
+    padding: 0.65rem 0.8rem;
+    border: 1px solid var(--border);
+    text-align: left;
+}
+
+th {
+    background: var(--primary);
+    color: #ffffff;
+    font-weight: 600;
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    letter-spacing: 0.03em;
+}
+
+tr:nth-child(even) { background: var(--hover); }
+tr:hover { background: #e2e8f0; }
+
+/* === Status Badges === */
+.badge {
+    display: inline-block;
+    padding: 0.2rem 0.6rem;
+    border-radius: 12px;
+    font-size: 0.78rem;
+    font-weight: 600;
+    text-transform: uppercase;
+}
+.badge-passed { background: #c6f6d5; color: #276749; }
+.badge-failed { background: #fed7d7; color: #9b2c2c; }
+.badge-warning { background: #fefcbf; color: #975a16; }
+
+/* === Charts === */
+img.chart-embed {
+    max-width: 100%;
+    height: auto;
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    margin: 1rem 0;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+}
+
+/* === Collapsible Sections === */
+.section-content {
+    transition: max-height 0.3s ease-out;
+    overflow: hidden;
+}
+
+.section-content.collapsed {
+    display: none;
+}
+
+/* === Code === */
+code {
+    background: var(--hover);
+    padding: 0.15em 0.4em;
+    border-radius: 3px;
+    font-size: 0.88em;
+    color: var(--primary-light);
+}
+
+/* === Print === */
+@media print {
+    body { display: block; }
+    .sidebar { display: none; }
+    .report-container {
+        margin-left: 0;
+        box-shadow: none;
+        padding: 1rem;
+        max-width: 100%;
+    }
+    h2::after { display: none; }
+    .section-content.collapsed { display: block !important; }
+    table { page-break-inside: avoid; }
+    h2 { page-break-after: avoid; }
+}
+
+/* === Responsive === */
+@media (max-width: 768px) {
+    .sidebar { display: none; }
+    .report-container { margin-left: 0; padding: 1.5rem; }
+}
+
+    </style>
+</head>
+<body>
+    <nav class="sidebar">
+        <h3>FinSight AI</h3>
+        <a href="#section-1">1. Executive Summary</a>
+        <a href="#section-2">2. Dataset Overview</a>
+        <a href="#section-3">3. Business Analytics</a>
+        <a href="#section-4">4. AI Insights</a>
+        <a href="#section-5">5. Validation Summary</a>
+        <a href="#section-6">6. Visualizations</a>
+        <a href="#section-7">7. Workflow Execution</a>
+        <a href="#section-8">8. Appendix</a>
+    </nav>
+
+    <div class="report-container">
+        <h1>FinSight AI — Executive Report</h1>
+
+<p><strong>Project:</strong> Enterprise Data Intelligence
+<strong>Dataset:</strong> <code>finsight_sample_sales_dataset.csv</code>
+<strong>Execution Date:</strong> 2026-07-17 17:12:00 UTC</p>
+
+<h2><strong>Generated By:</strong> FinSight Multi-Agent Workflow</h2>
+
+<h2>1. Executive Summary</h2>
+
+<table>
+<thead>
+<tr>
+  <th>Attribute</th>
+  <th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+  <td><strong>Dataset</strong></td>
+  <td><code>finsight_sample_sales_dataset.csv</code></td>
+</tr>
+<tr>
+  <td><strong>Business Domain</strong></td>
+  <td>Retail</td>
+</tr>
+<tr>
+  <td><strong>Dataset Type</strong></td>
+  <td>Sales</td>
+</tr>
+<tr>
+  <td><strong>Rows</strong></td>
+  <td>N/A</td>
+</tr>
+<tr>
+  <td><strong>Columns</strong></td>
+  <td>N/A</td>
+</tr>
+<tr>
+  <td><strong>Quality Grade</strong></td>
+  <td>N/A</td>
+</tr>
+<tr>
+  <td><strong>Overall Confidence</strong></td>
+  <td>0.612</td>
+</tr>
+<tr>
+  <td><strong>Validation Status</strong></td>
+  <td>FAILED</td>
+</tr>
+<tr>
+  <td><strong>Planner Confidence</strong></td>
+  <td>0.98</td>
+</tr>
+<tr>
+  <td><strong>Execution Time</strong></td>
+  <td>0.01s</td>
+</tr>
+</tbody>
+</table>
+
+<p>The business is currently facing a critical situation with an observed overall decreasing revenue trend, specifically a -68.23% growth percentage over the past four months, culminating in a Total Revenue of $3,182,803.0. This significant decline represents the primary risk to financial health. A key opportunity lies in leveraging the strong performance of the Consumer customer segment, which contributes 42.28% of the total revenue, and the top-performing 'Desk' product. The most important KPI to closely monitor is Total Revenue, with immediate action required to investigate its sharp decline. My overall confidence in this analysis is 0.9667, supported by high data quality and completeness, despite the presence of a few revenue outliers.</p>
+
+<hr />
+
+<h2>2. Dataset Overview</h2>
+
+<table>
+<thead>
+<tr>
+  <th>Attribute</th>
+  <th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+  <td><strong>Rows</strong></td>
+  <td>N/A</td>
+</tr>
+<tr>
+  <td><strong>Columns</strong></td>
+  <td>N/A</td>
+</tr>
+<tr>
+  <td><strong>Memory Usage</strong></td>
+  <td>N/A MB</td>
+</tr>
+<tr>
+  <td><strong>Dataset Type</strong></td>
+  <td>Sales</td>
+</tr>
+<tr>
+  <td><strong>Business Domain</strong></td>
+  <td>Retail</td>
+</tr>
+</tbody>
+</table>
+
+<p><em>No risks detected.</em></p>
+
+<h3>Cleaning Recommendations</h3>
+
+<ul>
+<li><strong>Outliers Detected</strong>: Fix</li>
+<li><strong>Outliers Detected</strong>: Fix</li>
+</ul>
+
+<hr />
+
+<h2>3. Business Analytics</h2>
+
+<h3>KPIs</h3>
+
+<h4>Total Records</h4>
+
+<ul>
+<li><p><strong>Total Records:</strong> 120</p>
+
+<h4>Total Columns</h4></li>
+<li><p><strong>Total Columns:</strong> 8</p>
+
+<h4>Missing Percentage</h4></li>
+<li><p><strong>Missing Percentage:</strong> 0.0</p>
+
+<h4>Duplicate Percentage</h4></li>
+<li><p><strong>Duplicate Percentage:</strong> 0.0</p>
+
+<h4>Numerical Stats</h4></li>
+</ul>
+
+<table>
+<thead>
+<tr>
+  <th>KPI</th>
+  <th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+  <td>Units_Sold</td>
+  <td>{'Mean': 42.175, 'Median': 42.0, 'Min': 5.0, 'Max': 79.0, 'Std': 22.364310741849014, 'Sum': 5061.0, 'Mode': 18.0}</td>
+</tr>
+<tr>
+  <td>Revenue</td>
+  <td>{'Mean': 26523.358333333334, 'Median': 20142.0, 'Min': 1020.0, 'Max': 84456.0, 'Std': 20794.971509088333, 'Sum': 3182803.0, 'Mode': 1020.0}</td>
+</tr>
+<tr>
+  <td>Profit</td>
+  <td>{'Mean': 5337.838000000001, 'Median': 3994.425, 'Min': 117.79, 'Max': 23325.02, 'Std': 4397.258969556743, 'Sum': 640540.56, 'Mode': 117.79}</td>
+</tr>
+</tbody>
+</table>
+
+<h4>Categorical Stats</h4>
+
+<table>
+<thead>
+<tr>
+  <th>KPI</th>
+  <th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+  <td>Region</td>
+  <td>{'Cardinality': 4, 'Top Category': 'North', 'Top Category Frequency': 33, 'Top Category %': 27.500000000000004}</td>
+</tr>
+<tr>
+  <td>Category</td>
+  <td>{'Cardinality': 3, 'Top Category': 'Electronics', 'Top Category Frequency': 46, 'Top Category %': 38.333333333333336}</td>
+</tr>
+<tr>
+  <td>Product</td>
+  <td>{'Cardinality': 9, 'Top Category': 'Desk', 'Top Category Frequency': 18, 'Top Category %': 15.0}</td>
+</tr>
+<tr>
+  <td>Customer_Segment</td>
+  <td>{'Cardinality': 3, 'Top Category': 'Consumer', 'Top Category Frequency': 46, 'Top Category %': 38.333333333333336}</td>
+</tr>
+</tbody>
+</table>
+
+<h4>Date Stats</h4>
+
+<table>
+<thead>
+<tr>
+  <th>KPI</th>
+  <th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+  <td>Earliest Date</td>
+  <td>2025-01-01</td>
+</tr>
+<tr>
+  <td>Latest Date</td>
+  <td>2025-04-30</td>
+</tr>
+<tr>
+  <td>Time Span (Days)</td>
+  <td>119</td>
+</tr>
+<tr>
+  <td>Total Months Spanned</td>
+  <td>4</td>
+</tr>
+<tr>
+  <td>Total Years Spanned</td>
+  <td>1</td>
+</tr>
+</tbody>
+</table>
+
+<h4>Total Revenue</h4>
+
+<ul>
+<li><p><strong>Total Revenue:</strong> 3182803.0</p>
+
+<h4>Average Transaction Amount</h4></li>
+<li><p><strong>Average Transaction Amount:</strong> 26523.358333333334</p>
+
+<h4>Largest Transaction</h4></li>
+<li><p><strong>Largest Transaction:</strong> 84456.0</p>
+
+<h4>Total Profit</h4></li>
+<li><p><strong>Total Profit:</strong> 640540.56</p></li>
+</ul>
+
+<h3>Trend Analysis</h3>
+
+<table>
+<thead>
+<tr>
+  <th>Metric</th>
+  <th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+  <td>Overall Trend</td>
+  <td>Decreasing</td>
+</tr>
+<tr>
+  <td>Growth Percentage</td>
+  <td>-68.23</td>
+</tr>
+<tr>
+  <td>Average Daily Value</td>
+  <td>26523.36</td>
+</tr>
+</tbody>
+</table>
+
+<h3>Segmentation Analysis</h3>
+
+<h4>Region</h4>
+
+<ul>
+<li><strong>Top Performers:</strong> {'North': 920775.0, 'South': 901139.0, 'East': 752297.0, 'West': 608592.0}</li>
+<li><strong>Bottom Performers:</strong> {'North': 920775.0, 'South': 901139.0, 'East': 752297.0, 'West': 608592.0}</li>
+<li><strong>Largest Contributor %:</strong> 28.92968870520733</li>
+<li><strong>Smallest Contributor %:</strong> 19.121258840085297</li>
+<li><p><strong>Top vs Next % Difference:</strong> 2.1790201067759805</p>
+
+<h4>Category</h4></li>
+<li><p><strong>Top Performers:</strong> {'Electronics': 1213764.0, 'Office': 1044333.0, 'Furniture': 924706.0}</p></li>
+<li><strong>Bottom Performers:</strong> {'Electronics': 1213764.0, 'Office': 1044333.0, 'Furniture': 924706.0}</li>
+<li><strong>Largest Contributor %:</strong> 38.13506522395511</li>
+<li><strong>Smallest Contributor %:</strong> 29.05319619216144</li>
+<li><p><strong>Top vs Next % Difference:</strong> 16.223848140392004</p>
+
+<h4>Product</h4></li>
+<li><p><strong>Top Performers:</strong> {'Desk': 606728.0, 'Laptop': 495763.0, 'Tablet': 413501.0, 'Monitor': 381302.0, 'Paper': 371339.0}</p></li>
+<li><strong>Bottom Performers:</strong> {'Paper': 371339.0, 'Phone': 304500.0, 'Printer': 291692.0, 'Table': 159226.0, 'Chair': 158752.0}</li>
+<li><strong>Largest Contributor %:</strong> 19.062694109563175</li>
+<li><strong>Smallest Contributor %:</strong> 4.98780477459648</li>
+<li><p><strong>Top vs Next % Difference:</strong> 22.38267075195204</p>
+
+<h4>Customer_Segment</h4></li>
+<li><p><strong>Top Performers:</strong> {'Consumer': 1345534.0, 'Corporate': 939522.0, 'Small Business': 897747.0}</p></li>
+<li><strong>Bottom Performers:</strong> {'Consumer': 1345534.0, 'Corporate': 939522.0, 'Small Business': 897747.0}</li>
+<li><strong>Largest Contributor %:</strong> 42.27512667293578</li>
+<li><strong>Smallest Contributor %:</strong> 28.206175500023097</li>
+<li><strong>Top vs Next % Difference:</strong> 43.21474111303408</li>
+</ul>
+
+<h3>Statistical Summary</h3>
+
+<p><em>No information available.</em></p>
+
+<h3>Detected Anomalies</h3>
+
+<ul>
+<li>⚠️ Detected 1 extreme high values in Revenue (IQR method).</li>
+</ul>
+
+<hr />
+
+<h2>4. AI Business Insights</h2>
+
+<h3>Executive Summary</h3>
+
+<p>The business is currently facing a critical situation with an observed overall decreasing revenue trend, specifically a -68.23% growth percentage over the past four months, culminating in a Total Revenue of $3,182,803.0. This significant decline represents the primary risk to financial health. A key opportunity lies in leveraging the strong performance of the Consumer customer segment, which contributes 42.28% of the total revenue, and the top-performing 'Desk' product. The most important KPI to closely monitor is Total Revenue, with immediate action required to investigate its sharp decline. My overall confidence in this analysis is 0.9667, supported by high data quality and completeness, despite the presence of a few revenue outliers.</p>
+
+<h3>Key Findings</h3>
+
+<table>
+<thead>
+<tr>
+  <th>#</th>
+  <th>Finding</th>
+  <th>Confidence</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+  <td>1</td>
+  <td><strong>Significant Revenue Decline Observed</strong> — The overall trend analysis indicates a substantial decrease in revenue performance over the observed period, with a negative growth percentage.</td>
+  <td>1.0</td>
+</tr>
+<tr>
+  <td>2</td>
+  <td><strong>Consumer Segment Dominates Revenue Contribution</strong> — The Consumer customer segment is the largest contributor to total revenue, generating $1,345,534.0.</td>
+  <td>1.0</td>
+</tr>
+<tr>
+  <td>3</td>
+  <td><strong>Extreme High Values Detected in Revenue</strong> — The analysis identified one extreme high value in the Revenue metric using the IQR method.</td>
+  <td>0.9</td>
+</tr>
+<tr>
+  <td>4</td>
+  <td><strong>"Desk" Product Leads Sales, "Chair" Underperforms</strong> — The "Desk" product generates the highest revenue at $606,728.0, while "Chair" is the lowest performing product at $158,752.0.</td>
+  <td>1.0</td>
+</tr>
+<tr>
+  <td>5</td>
+  <td><strong>North Region is Top Revenue Contributor</strong> — The North region accounts for the highest share of revenue among all regions, contributing $920,775.0.</td>
+  <td>1.0</td>
+</tr>
+<tr>
+  <td>6</td>
+  <td><strong>Electronics Category Drives Highest Revenue</strong> — The Electronics category is the leading revenue generator, totaling $1,213,764.0.</td>
+  <td>1.0</td>
+</tr>
+</tbody>
+</table>
+
+<h3>Business Opportunities</h3>
+
+<ul>
+<li><strong>Capitalize on Strong Consumer Segment Performance</strong>: The Consumer segment is the largest revenue contributor, presenting a clear opportunity to further strengthen engagement and loyalty within this high-value customer group. <em>(Confidence: 1.0)</em></li>
+<li><strong>Optimize "Desk" Product Sales and Profitability</strong>: "Desk" is the top-performing product by revenue, indicating strong market demand and an opportunity to maximize its potential through focused strategies. <em>(Confidence: 1.0)</em></li>
+<li><strong>Replicate Success of North Region in Other Geographies</strong>: The North region significantly outperforms other regions in revenue, suggesting successful strategies or market conditions that could be adapted and applied elsewhere. <em>(Confidence: 0.95)</em></li>
+</ul>
+
+<h3>Business Risks</h3>
+
+<table>
+<thead>
+<tr>
+  <th>Risk</th>
+  <th>Severity</th>
+  <th>Impact</th>
+  <th>Recommended Action</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+  <td>Financial Performance</td>
+  <td>Critical</td>
+  <td>The observed -68.23% revenue growth percentage indicates a severe and ongoing decline in financial performance, threatening overall profitability and sustainability.</td>
+  <td>Initiate an immediate deep dive into the factors driving the -68.23% growth percentage in revenue.</td>
+</tr>
+<tr>
+  <td>Market Concentration</td>
+  <td>High</td>
+  <td>Over-reliance on the Consumer segment, contributing 42.28% of total revenue, makes the business vulnerable to shifts in this segment's purchasing behavior or market conditions.</td>
+  <td>Develop targeted strategies to grow revenue contributions from the Corporate and Small Business segments to mitigate concentration risk.</td>
+</tr>
+<tr>
+  <td>Operational Efficiency/Product Portfolio</td>
+  <td>Medium</td>
+  <td>Underperforming products like "Chair" (revenue of $158,752.0) tie up capital in inventory, incur marketing costs with low returns, and reduce overall portfolio efficiency.</td>
+  <td>Conduct a profitability analysis for bottom-performing products such as "Chair" and "Table" (revenue $159,226.0) to assess viability and inform future product strategy.</td>
+</tr>
+</tbody>
+</table>
+
+<h3>Recommendations</h3>
+
+<table>
+<thead>
+<tr>
+  <th>Horizon</th>
+  <th>Recommendation</th>
+  <th>Priority</th>
+  <th>Confidence</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+  <td>Immediate</td>
+  <td>Conduct a forensic analysis into the -68.23% revenue growth percentage.</td>
+  <td>Immediate</td>
+  <td>1.0</td>
+</tr>
+<tr>
+  <td>Immediate</td>
+  <td>Investigate the identified extreme high values in Revenue.</td>
+  <td>High</td>
+  <td>0.9</td>
+</tr>
+<tr>
+  <td>Medium-term</td>
+  <td>Develop a targeted engagement and retention strategy for the Consumer segment.</td>
+  <td>High</td>
+  <td>1.0</td>
+</tr>
+<tr>
+  <td>Long-term</td>
+  <td>Evaluate the feasibility of expanding successful strategies from the North region to other underperforming regions.</td>
+  <td>Medium</td>
+  <td>0.9</td>
+</tr>
+</tbody>
+</table>
+
+<h3>Next Best Actions</h3>
+
+<table>
+<thead>
+<tr>
+  <th>Action</th>
+  <th>Expected Benefit</th>
+  <th>Urgency</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+  <td>Task the BI team to generate a detailed report on the drivers of the -68.23% revenue growth percentage, breaking it down by product, category, region, and customer segment.</td>
+  <td>A clear understanding of the problem areas, enabling focused and data-driven intervention strategies to reverse the negative trend.</td>
+  <td>Immediate</td>
+</tr>
+<tr>
+  <td>Review the single extreme high value transaction in Revenue to determine if it is a data entry error or a legitimate, but unusual, sale.</td>
+  <td>Improved data integrity and more accurate financial reporting, ensuring that future analyses are based on reliable figures.</td>
+  <td>This Week</td>
+</tr>
+<tr>
+  <td>Initiate a review of the marketing and sales strategies currently employed for the "Desk" product and the "Electronics" category to identify best practices.</td>
+  <td>Identification of successful tactics that can be applied to other products or categories to boost performance and increase overall revenue.</td>
+  <td>This Month</td>
+</tr>
+</tbody>
+</table>
+
+<hr />
+
+<h2>5. Validation Summary</h2>
+
+<table>
+<thead>
+<tr>
+  <th>Metric</th>
+  <th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+  <td><strong>Overall Status</strong></td>
+  <td>FAILED</td>
+</tr>
+<tr>
+  <td><strong>Average Confidence</strong></td>
+  <td>0.612</td>
+</tr>
+<tr>
+  <td><strong>Hallucination Rate</strong></td>
+  <td>0.632</td>
+</tr>
+</tbody>
+</table>
+
+<h3>Validated Insights</h3>
+
+<table>
+<thead>
+<tr>
+  <th>Insight</th>
+  <th>Status</th>
+  <th>Confidence</th>
+  <th>Evidence</th>
+  <th>Hallucination</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+  <td>Significant Revenue Decline Observed. The overall trend analysis indicates a sub...</td>
+  <td>FAILED</td>
+  <td>0.533</td>
+  <td>0.0</td>
+  <td>0.667</td>
+</tr>
+<tr>
+  <td>Consumer Segment Dominates Revenue Contribution. The Consumer customer segment i...</td>
+  <td>FAILED</td>
+  <td>0.573</td>
+  <td>0.333</td>
+  <td>1.0</td>
+</tr>
+<tr>
+  <td>Extreme High Values Detected in Revenue. The analysis identified one extreme hig...</td>
+  <td>PASSED</td>
+  <td>0.6</td>
+  <td>0.0</td>
+  <td>0.0</td>
+</tr>
+<tr>
+  <td>"Desk" Product Leads Sales, "Chair" Underperforms. The "Desk" product generates ...</td>
+  <td>FAILED</td>
+  <td>0.54</td>
+  <td>0.4</td>
+  <td>1.0</td>
+</tr>
+<tr>
+  <td>North Region is Top Revenue Contributor. The North region accounts for the highe...</td>
+  <td>FAILED</td>
+  <td>0.573</td>
+  <td>0.333</td>
+  <td>1.0</td>
+</tr>
+<tr>
+  <td>Electronics Category Drives Highest Revenue. The Electronics category is the lea...</td>
+  <td>FAILED</td>
+  <td>0.573</td>
+  <td>0.333</td>
+  <td>1.0</td>
+</tr>
+<tr>
+  <td>Financial Performance. The observed -68.23% revenue growth percentage indicates ...</td>
+  <td>FAILED</td>
+  <td>0.5</td>
+  <td>0.0</td>
+  <td>1.0</td>
+</tr>
+<tr>
+  <td>Market Concentration. Over-reliance on the Consumer segment, contributing 42.28%...</td>
+  <td>PASSED</td>
+  <td>0.867</td>
+  <td>0.667</td>
+  <td>0.0</td>
+</tr>
+<tr>
+  <td>Operational Efficiency/Product Portfolio. Underperforming products like "Chair" ...</td>
+  <td>FAILED</td>
+  <td>0.44</td>
+  <td>0.0</td>
+  <td>1.0</td>
+</tr>
+<tr>
+  <td>Capitalize on Strong Consumer Segment Performance. The Consumer segment is the l...</td>
+  <td>PASSED</td>
+  <td>0.8</td>
+  <td>0.5</td>
+  <td>0.0</td>
+</tr>
+<tr>
+  <td>Optimize "Desk" Product Sales and Profitability. "Desk" is the top-performing pr...</td>
+  <td>PASSED</td>
+  <td>0.8</td>
+  <td>0.5</td>
+  <td>0.0</td>
+</tr>
+<tr>
+  <td>Replicate Success of North Region in Other Geographies. The North region signifi...</td>
+  <td>PASSED</td>
+  <td>0.8</td>
+  <td>0.5</td>
+  <td>0.0</td>
+</tr>
+<tr>
+  <td>Conduct a forensic analysis into the -68.23% revenue growth percentage.. The sig...</td>
+  <td>FAILED</td>
+  <td>0.5</td>
+  <td>0.0</td>
+  <td>1.0</td>
+</tr>
+<tr>
+  <td>Investigate the identified extreme high values in Revenue.. Outliers can distort...</td>
+  <td>PASSED</td>
+  <td>0.6</td>
+  <td>0.0</td>
+  <td>0.0</td>
+</tr>
+<tr>
+  <td>Develop a targeted engagement and retention strategy for the Consumer segment.. ...</td>
+  <td>FAILED</td>
+  <td>0.7</td>
+  <td>0.5</td>
+  <td>1.0</td>
+</tr>
+<tr>
+  <td>Evaluate the feasibility of expanding successful strategies from the North regio...</td>
+  <td>FAILED</td>
+  <td>0.48</td>
+  <td>0.25</td>
+  <td>1.0</td>
+</tr>
+<tr>
+  <td>Task the BI team to generate a detailed report on the drivers of the -68.23% rev...</td>
+  <td>FAILED</td>
+  <td>0.5</td>
+  <td>0.0</td>
+  <td>1.0</td>
+</tr>
+<tr>
+  <td>Review the single extreme high value transaction in Revenue to determine if it i...</td>
+  <td>PASSED</td>
+  <td>0.6</td>
+  <td>0.0</td>
+  <td>0.0</td>
+</tr>
+<tr>
+  <td>Initiate a review of the marketing and sales strategies currently employed for t...</td>
+  <td>FAILED</td>
+  <td>0.647</td>
+  <td>0.667</td>
+  <td>1.0</td>
+</tr>
+</tbody>
+</table>
+
+<h3>Unsupported Claims</h3>
+
+<ul>
+<li>❌ Trend claim 'growing' contradicts actual trend 'decreasing'.</li>
+<li>❌ Trend claim 'declining' contradicts actual trend 'decreasing'.</li>
+<li>❌ Numerical claim '1345534.0' not found in deterministic analytics.</li>
+<li>❌ Numerical claim '606728.0' not found in deterministic analytics.</li>
+<li>❌ Numerical claim '158752.0' not found in deterministic analytics.</li>
+<li>❌ Numerical claim '920775.0' not found in deterministic analytics.</li>
+<li>❌ Numerical claim '1213764.0' not found in deterministic analytics.</li>
+<li>❌ Percentage claim '68.23%' not found in deterministic analytics.</li>
+<li>❌ Trend claim 'growing' contradicts actual trend 'decreasing'.</li>
+<li>❌ Trend claim 'declining' contradicts actual trend 'decreasing'.</li>
+<li>❌ Numerical claim '158752.0' not found in deterministic analytics.</li>
+<li>❌ Percentage claim '68.23%' not found in deterministic analytics.</li>
+<li>❌ Trend claim 'growing' contradicts actual trend 'decreasing'.</li>
+<li>❌ Trend claim 'growing' contradicts actual trend 'decreasing'.</li>
+<li>❌ Numerical claim '920775.0' not found in deterministic analytics.</li>
+<li>❌ Numerical claim '28.93' not found in deterministic analytics.</li>
+<li>❌ Percentage claim '28.93%' not found in deterministic analytics.</li>
+<li>❌ Percentage claim '68.23%' not found in deterministic analytics.</li>
+<li>❌ Trend claim 'growing' contradicts actual trend 'decreasing'.</li>
+<li>❌ Trend claim 'increasing' contradicts actual trend 'decreasing'.</li>
+</ul>
+
+<hr />
+
+<h2>6. Visualizations</h2>
+
+<p><em>No visualizations generated.</em></p>
+
+<hr />
+
+<h2>7. Workflow Execution</h2>
+
+<table>
+<thead>
+<tr>
+  <th>Metric</th>
+  <th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+  <td><strong>Execution Time</strong></td>
+  <td>0.01s</td>
+</tr>
+<tr>
+  <td><strong>LLM Provider</strong></td>
+  <td>Cache</td>
+</tr>
+<tr>
+  <td><strong>Total LLM Calls</strong></td>
+  <td>0</td>
+</tr>
+<tr>
+  <td><strong>Estimated Tokens</strong></td>
+  <td>0</td>
+</tr>
+<tr>
+  <td><strong>Estimated Cost</strong></td>
+  <td>$0.0000</td>
+</tr>
+<tr>
+  <td><strong>Prompt Version</strong></td>
+  <td>v4.0</td>
+</tr>
+</tbody>
+</table>
+
+<h3>Agents Executed</h3>
+
+<ol>
+<li>Data Auditor Agent</li>
+<li>Planner Agent</li>
+<li>Analytics Agent</li>
+<li>Insight Agent</li>
+<li>Validation Agent</li>
+<li>Visualization Agent</li>
+</ol>
+
+<h3>Execution Timeline</h3>
+
+<table>
+<thead>
+<tr>
+  <th>Agent</th>
+  <th>Duration</th>
+  <th>Status</th>
+  <th>Provider</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+  <td>Data Auditor Agent</td>
+  <td>0.06s</td>
+  <td>COMPLETED</td>
+  <td>Deterministic</td>
+</tr>
+<tr>
+  <td>Planner Agent</td>
+  <td>0.01s</td>
+  <td>COMPLETED</td>
+  <td>Deterministic</td>
+</tr>
+<tr>
+  <td>Analytics Agent</td>
+  <td>0.06s</td>
+  <td>COMPLETED</td>
+  <td>Deterministic</td>
+</tr>
+<tr>
+  <td>Insight Agent</td>
+  <td>0.01s</td>
+  <td>COMPLETED</td>
+  <td>Deterministic</td>
+</tr>
+<tr>
+  <td>Validation Agent</td>
+  <td>0.02s</td>
+  <td>COMPLETED</td>
+  <td>Deterministic</td>
+</tr>
+<tr>
+  <td>Visualization Agent</td>
+  <td>0.02s</td>
+  <td>COMPLETED</td>
+  <td>Deterministic</td>
+</tr>
+</tbody>
+</table>
+
+<hr />
+
+<h2>8. Appendix</h2>
+
+<h3>Dataset Metadata</h3>
+
+<ul>
+<li><strong>Filename:</strong> finsight<em>sample</em>sales_dataset.csv</li>
+<li><strong>Business Domain:</strong> Retail</li>
+<li><strong>Dataset Category:</strong> Sales</li>
+</ul>
+
+<h3>Agent Execution Logs</h3>
+
+<table>
+<thead>
+<tr>
+  <th>Agent</th>
+  <th>Status</th>
+  <th>Provider</th>
+  <th>LLM Calls</th>
+  <th>Cost</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+  <td>Data Auditor Agent</td>
+  <td>COMPLETED</td>
+  <td></td>
+  <td>0</td>
+  <td>$0.0000</td>
+</tr>
+<tr>
+  <td>Planner Agent</td>
+  <td>COMPLETED</td>
+  <td>Cache</td>
+  <td>0</td>
+  <td>$0.0000</td>
+</tr>
+<tr>
+  <td>Analytics Agent</td>
+  <td>COMPLETED</td>
+  <td>Deterministic (Pandas)</td>
+  <td>0</td>
+  <td>$0.0000</td>
+</tr>
+<tr>
+  <td>Insight Agent</td>
+  <td>COMPLETED</td>
+  <td>Cache</td>
+  <td>0</td>
+  <td>$0.0000</td>
+</tr>
+<tr>
+  <td>Validation Agent</td>
+  <td>COMPLETED</td>
+  <td>Deterministic Strategy Engine</td>
+  <td>0</td>
+  <td>$0.0000</td>
+</tr>
+<tr>
+  <td>Visualization Agent</td>
+  <td>COMPLETED</td>
+  <td>Deterministic Strategy Engine</td>
+  <td>0</td>
+  <td>$0.0000</td>
+</tr>
+</tbody>
+</table>
+
+<hr />
+
+<p><em>Report generated by FinSight AI — Enterprise Data Intelligence Platform</em></p>
+
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // Assign section IDs to h2 elements
+            const headings = document.querySelectorAll('h2');
+            let sectionIndex = 0;
+            headings.forEach(h2 => {
+                sectionIndex++;
+                h2.id = 'section-' + sectionIndex;
+
+                // Group content between headings
+                const wrapper = document.createElement('div');
+                wrapper.className = 'section-content';
+
+                let sibling = h2.nextElementSibling;
+                while (sibling && sibling.tagName !== 'H2' && sibling.tagName !== 'H1' && sibling.tagName !== 'HR') {
+                    const next = sibling.nextElementSibling;
+                    wrapper.appendChild(sibling);
+                    sibling = next;
+                }
+
+                h2.parentNode.insertBefore(wrapper, h2.nextSibling);
+
+                // Collapsible click handler
+                h2.addEventListener('click', () => {
+                    h2.classList.toggle('collapsed');
+                    wrapper.classList.toggle('collapsed');
+                });
+            });
+
+            // Status badge injection
+            const cells = document.querySelectorAll('td');
+            cells.forEach(td => {
+                const text = td.textContent.trim();
+                if (text === 'PASSED') {
+                    td.innerHTML = '<span class="badge badge-passed">PASSED</span>';
+                } else if (text === 'FAILED') {
+                    td.innerHTML = '<span class="badge badge-failed">FAILED</span>';
+                } else if (text === 'WARNING') {
+                    td.innerHTML = '<span class="badge badge-warning">WARNING</span>';
+                } else if (text === 'COMPLETED') {
+                    td.innerHTML = '<span class="badge badge-passed">COMPLETED</span>';
+                }
+            });
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,10 @@
+{
+    "total_runtime": 14.222051,
+    "average_agent_runtime": 2.0317215714285717,
+    "most_expensive_agent": null,
+    "slowest_agent": "Visualization Agent",
+    "fastest_agent": "Insight Agent",
+    "total_estimated_cost": 0.0,
+    "total_tokens": 0,
+    "average_tokens_per_agent": 0.0
+}

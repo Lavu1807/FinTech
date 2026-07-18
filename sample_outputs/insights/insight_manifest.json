@@ -1,0 +1,18 @@
+{
+    "generated_at": "2026-07-17T17:41:42.680929",
+    "overall_confidence": 0.895,
+    "finding_count": 6,
+    "risk_count": 3,
+    "opportunity_count": 3,
+    "recommendation_count": 4,
+    "action_count": 3,
+    "quality_observation_count": 2,
+    "exported_files": [
+        "E:\\GIT PROJECTS\\FinTech\\backend\\exports\\insights\\executive_summary.json",
+        "E:\\GIT PROJECTS\\FinTech\\backend\\exports\\insights\\key_findings.json",
+        "E:\\GIT PROJECTS\\FinTech\\backend\\exports\\insights\\opportunities.json",
+        "E:\\GIT PROJECTS\\FinTech\\backend\\exports\\insights\\risks.json",
+        "E:\\GIT PROJECTS\\FinTech\\backend\\exports\\insights\\recommendations.json",
+        "E:\\GIT PROJECTS\\FinTech\\backend\\exports\\insights\\next_actions.json"
+    ]
+}

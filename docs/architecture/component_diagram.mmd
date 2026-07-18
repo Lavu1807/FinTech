@@ -1,0 +1,66 @@
+graph TB
+    subgraph FinSight AI Platform
+        
+        subgraph FastAPI Layer
+            API[main.py / FastAPI App]
+            Routers[api/v1/routers]
+        end
+        
+        subgraph LangGraph Orchestration
+            Graph[graph/workflow_runner.py]
+            Nodes[graph/hooks.py]
+        end
+        
+        subgraph Agent Modules
+            A_Auditor[agents/auditor]
+            A_Planner[agents/planner]
+            A_Analytics[agents/analytics]
+            A_Insights[agents/insights]
+            A_Validation[agents/validation]
+            A_Viz[agents/visualization]
+            A_Report[agents/report]
+        end
+        
+        subgraph Core Services
+            State[state/state.py - FinSightState]
+            LLM[services/llm_gateway.py]
+            Artifacts[services/artifact_manager.py]
+            Telemetry[utils/telemetry.py]
+            Config[config/settings.py]
+        end
+        
+        subgraph Reporting Engines
+            PDF[reporting/pdf/pdf_builder.py]
+            Dash[reporting/dashboard/dashboard_builder.py]
+            Pkg[reporting/package/package_builder.py]
+            Trace[reporting/explainability/trace_builder.py]
+        end
+        
+        subgraph Evaluation Framework
+            Eval[evaluation/benchmark.py]
+            Metrics[evaluation/metrics.py]
+        end
+        
+        %% Relationships
+        API --> Routers
+        Routers --> Graph
+        Graph --> Nodes
+        Nodes --> A_Auditor
+        Nodes --> A_Planner
+        Nodes --> A_Analytics
+        Nodes --> A_Insights
+        Nodes --> A_Validation
+        Nodes --> A_Viz
+        Nodes --> A_Report
+        
+        A_Report --> PDF
+        A_Report --> Dash
+        A_Report --> Pkg
+        A_Report --> Trace
+        
+        Agent Modules -.-> State
+        Agent Modules -.-> LLM
+        Agent Modules -.-> Artifacts
+        
+        Eval --> Graph
+    end

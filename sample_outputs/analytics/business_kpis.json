@@ -1,0 +1,72 @@
+{
+    "Total Records": 120,
+    "Total Columns": 8,
+    "Missing Percentage": 0.0,
+    "Duplicate Percentage": 0.0,
+    "Numerical Stats": {
+        "Units_Sold": {
+            "Mean": 42.175,
+            "Median": 42.0,
+            "Min": 5.0,
+            "Max": 79.0,
+            "Std": 22.364310741849014,
+            "Sum": 5061.0,
+            "Mode": 18.0
+        },
+        "Revenue": {
+            "Mean": 26523.358333333334,
+            "Median": 20142.0,
+            "Min": 1020.0,
+            "Max": 84456.0,
+            "Std": 20794.971509088333,
+            "Sum": 3182803.0,
+            "Mode": 1020.0
+        },
+        "Profit": {
+            "Mean": 5337.838000000001,
+            "Median": 3994.425,
+            "Min": 117.79,
+            "Max": 23325.02,
+            "Std": 4397.258969556743,
+            "Sum": 640540.56,
+            "Mode": 117.79
+        }
+    },
+    "Categorical Stats": {
+        "Region": {
+            "Cardinality": 4,
+            "Top Category": "North",
+            "Top Category Frequency": 33,
+            "Top Category %": 27.500000000000004
+        },
+        "Category": {
+            "Cardinality": 3,
+            "Top Category": "Electronics",
+            "Top Category Frequency": 46,
+            "Top Category %": 38.333333333333336
+        },
+        "Product": {
+            "Cardinality": 9,
+            "Top Category": "Desk",
+            "Top Category Frequency": 18,
+            "Top Category %": 15.0
+        },
+        "Customer_Segment": {
+            "Cardinality": 3,
+            "Top Category": "Consumer",
+            "Top Category Frequency": 46,
+            "Top Category %": 38.333333333333336
+        }
+    },
+    "Date Stats": {
+        "Earliest Date": "2025-01-01",
+        "Latest Date": "2025-04-30",
+        "Time Span (Days)": 119,
+        "Total Months Spanned": 4,
+        "Total Years Spanned": 1
+    },
+    "Total Revenue": 3182803.0,
+    "Average Transaction Amount": 26523.358333333334,
+    "Largest Transaction": 84456.0,
+    "Total Profit": 640540.56
+}

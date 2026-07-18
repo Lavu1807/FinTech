@@ -1,0 +1,204 @@
+{
+    "summary": {
+        "workflow_status": "COMPLETED_WITH_WARNINGS",
+        "execution_time": 14.236403,
+        "total_cost": 0.0,
+        "total_tokens": 0,
+        "total_llm_calls": 0,
+        "dataset_name": "finsight_sample_sales_dataset.csv",
+        "dataset_type": "Sales",
+        "business_domain": "Retail",
+        "planner_confidence": 0.98,
+        "completed_agents": [
+            "Data Auditor Agent",
+            "Planner Agent",
+            "Analytics Agent",
+            "Insight Agent",
+            "Validation Agent",
+            "Visualization Agent",
+            "Report Generator Agent"
+        ],
+        "failed_agents": [],
+        "warnings_count": 3
+    },
+    "timeline": [
+        {
+            "timestamp": "2026-07-17 17:41:42.290528",
+            "event_name": "Dataset Uploaded"
+        },
+        {
+            "timestamp": "2026-07-17 17:41:42.290528",
+            "event_name": "Data Auditor Agent Started"
+        },
+        {
+            "timestamp": "2026-07-17 17:41:42.530850",
+            "event_name": "Data Auditor Agent Finished"
+        },
+        {
+            "timestamp": "2026-07-17 17:41:42.530850",
+            "event_name": "Planner Agent Started"
+        },
+        {
+            "timestamp": "2026-07-17 17:41:42.552711",
+            "event_name": "Planner Agent Finished"
+        },
+        {
+            "timestamp": "2026-07-17 17:41:42.552711",
+            "event_name": "Analytics Agent Started"
+        },
+        {
+            "timestamp": "2026-07-17 17:41:42.662022",
+            "event_name": "Analytics Agent Finished"
+        },
+        {
+            "timestamp": "2026-07-17 17:41:42.662022",
+            "event_name": "Insight Agent Started"
+        },
+        {
+            "timestamp": "2026-07-17 17:41:42.682274",
+            "event_name": "Insight Agent Finished"
+        },
+        {
+            "timestamp": "2026-07-17 17:41:42.682274",
+            "event_name": "Validation Agent Started"
+        },
+        {
+            "timestamp": "2026-07-17 17:41:42.706155",
+            "event_name": "Validation Agent Finished"
+        },
+        {
+            "timestamp": "2026-07-17 17:41:42.706155",
+            "event_name": "Visualization Agent Started"
+        },
+        {
+            "timestamp": "2026-07-17 17:41:53.741497",
+            "event_name": "Visualization Agent Finished"
+        },
+        {
+            "timestamp": "2026-07-17 17:41:53.741497",
+            "event_name": "Report Generator Agent Started"
+        },
+        {
+            "timestamp": "2026-07-17 17:41:56.512579",
+            "event_name": "Report Generator Agent Finished"
+        }
+    ],
+    "metrics": {
+        "total_runtime": 14.222051,
+        "average_agent_runtime": 2.0317215714285717,
+        "most_expensive_agent": null,
+        "slowest_agent": "Visualization Agent",
+        "fastest_agent": "Insight Agent",
+        "total_estimated_cost": 0.0,
+        "total_tokens": 0,
+        "average_tokens_per_agent": 0.0
+    },
+    "agents": [
+        {
+            "agent_name": "Data Auditor Agent",
+            "status": "COMPLETED",
+            "start_time": "2026-07-17 17:41:42.290528",
+            "end_time": "2026-07-17 17:41:42.530850",
+            "duration": 0.240322,
+            "provider_used": null,
+            "llm_calls": 0,
+            "estimated_tokens": 0,
+            "estimated_cost": 0.0,
+            "warnings": [],
+            "summary_message": "The dataset contains 120 records across 8 columns. Exactly 0 duplicate rows were found. Overall quality score is 96.67/100 (Grade A). The largest concern is outliers. 2 cleaning actions are recommended."
+        },
+        {
+            "agent_name": "Planner Agent",
+            "status": "COMPLETED",
+            "start_time": "2026-07-17 17:41:42.530850",
+            "end_time": "2026-07-17 17:41:42.552711",
+            "duration": 0.021861,
+            "provider_used": "Cache",
+            "llm_calls": 0,
+            "estimated_tokens": 0,
+            "estimated_cost": 0.0,
+            "warnings": [],
+            "summary_message": "Planned 4 nodes. Domain: Retail."
+        },
+        {
+            "agent_name": "Analytics Agent",
+            "status": "COMPLETED",
+            "start_time": "2026-07-17 17:41:42.552711",
+            "end_time": "2026-07-17 17:41:42.662022",
+            "duration": 0.109311,
+            "provider_used": "Deterministic (Pandas)",
+            "llm_calls": 0,
+            "estimated_tokens": 0,
+            "estimated_cost": 0.0,
+            "warnings": [
+                "Detected 1 extreme high values in Revenue (IQR method)."
+            ],
+            "summary_message": "Computed advanced analytics with 11 KPIs, 0 statistical metrics, and 1 anomalies."
+        },
+        {
+            "agent_name": "Insight Agent",
+            "status": "COMPLETED",
+            "start_time": "2026-07-17 17:41:42.662022",
+            "end_time": "2026-07-17 17:41:42.682274",
+            "duration": 0.020252,
+            "provider_used": "Cache",
+            "llm_calls": 0,
+            "estimated_tokens": 0,
+            "estimated_cost": 0.0,
+            "warnings": [],
+            "summary_message": "Generated 19 insights with confidence 0.895. Provider: Cache. Tokens: 0. Exports: 7 files."
+        },
+        {
+            "agent_name": "Validation Agent",
+            "status": "COMPLETED",
+            "start_time": "2026-07-17 17:41:42.682274",
+            "end_time": "2026-07-17 17:41:42.706155",
+            "duration": 0.023881,
+            "provider_used": "Deterministic Strategy Engine",
+            "llm_calls": 0,
+            "estimated_tokens": 0,
+            "estimated_cost": 0.0,
+            "warnings": [
+                "Failed validations: 12"
+            ],
+            "summary_message": "Validated 19 insights. Passed: 7, Failed: 12, Warnings: 0. Hallucination Rate: 63.2%."
+        },
+        {
+            "agent_name": "Visualization Agent",
+            "status": "COMPLETED",
+            "start_time": "2026-07-17 17:41:42.706155",
+            "end_time": "2026-07-17 17:41:53.741497",
+            "duration": 11.035342,
+            "provider_used": "Deterministic Strategy Engine",
+            "llm_calls": 0,
+            "estimated_tokens": 0,
+            "estimated_cost": 0.0,
+            "warnings": [],
+            "summary_message": "Generated 5 charts. Skipped 0. Render time: 11.03s. Export: E:\\GIT PROJECTS\\FinTech\\backend\\exports\\tableau\\dataset.csv"
+        },
+        {
+            "agent_name": "Report Generator Agent",
+            "status": "COMPLETED",
+            "start_time": "2026-07-17 17:41:53.741497",
+            "end_time": "2026-07-17 17:41:56.512579",
+            "duration": 2.771082,
+            "provider_used": "Deterministic",
+            "llm_calls": 0,
+            "estimated_tokens": 0,
+            "estimated_cost": 0.0,
+            "warnings": [
+                "PDF generation skipped due to missing dependencies."
+            ],
+            "summary_message": "Generated Markdown/HTML. PDF Success: False"
+        }
+    ],
+    "execution_graph": [
+        "Data Auditor Agent",
+        "Planner Agent",
+        "Analytics Agent",
+        "Insight Agent",
+        "Validation Agent",
+        "Visualization Agent",
+        "Report Generator Agent"
+    ]
+}

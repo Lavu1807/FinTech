@@ -1,0 +1,347 @@
+[
+    {
+        "insight": "Significant Revenue Decline Observed. The overall trend analysis indicates a substantial decrease in revenue performance over the observed period, with a negative growth percentage.",
+        "status": "FAILED",
+        "confidence_score": 0.533,
+        "hallucination_score": 0.667,
+        "consistency_score": 1.0,
+        "coverage_score": 1.0,
+        "evidence_score": 0.0,
+        "supporting_metrics": [],
+        "evidence_sources": [],
+        "validation_notes": [],
+        "warnings": [
+            "Trend claim 'growing' contradicts actual trend 'decreasing'.",
+            "Trend claim 'declining' contradicts actual trend 'decreasing'."
+        ]
+    },
+    {
+        "insight": "Consumer Segment Dominates Revenue Contribution. The Consumer customer segment is the largest contributor to total revenue, generating $1,345,534.0.",
+        "status": "FAILED",
+        "confidence_score": 0.573,
+        "hallucination_score": 1.0,
+        "consistency_score": 0.8,
+        "coverage_score": 1.0,
+        "evidence_score": 0.333,
+        "supporting_metrics": [
+            "Segment: Customer_Segment.Consumer"
+        ],
+        "evidence_sources": [
+            "Segmentation Engine"
+        ],
+        "validation_notes": [
+            "Numerical claim '1345534.0' deviates from deterministic KPIs by >5%."
+        ],
+        "warnings": [
+            "Numerical claim '1345534.0' not found in deterministic analytics."
+        ]
+    },
+    {
+        "insight": "Extreme High Values Detected in Revenue. The analysis identified one extreme high value in the Revenue metric using the IQR method.",
+        "status": "PASSED",
+        "confidence_score": 0.6,
+        "hallucination_score": 0.0,
+        "consistency_score": 1.0,
+        "coverage_score": 1.0,
+        "evidence_score": 0.0,
+        "supporting_metrics": [],
+        "evidence_sources": [],
+        "validation_notes": [],
+        "warnings": []
+    },
+    {
+        "insight": "\"Desk\" Product Leads Sales, \"Chair\" Underperforms. The \"Desk\" product generates the highest revenue at $606,728.0, while \"Chair\" is the lowest performing product at $158,752.0.",
+        "status": "FAILED",
+        "confidence_score": 0.54,
+        "hallucination_score": 1.0,
+        "consistency_score": 0.6000000000000001,
+        "coverage_score": 1.0,
+        "evidence_score": 0.4,
+        "supporting_metrics": [
+            "Segment: Region.West",
+            "Segment: Product.Desk"
+        ],
+        "evidence_sources": [
+            "Segmentation Engine"
+        ],
+        "validation_notes": [
+            "Numerical claim '606728.0' deviates from deterministic KPIs by >5%.",
+            "Numerical claim '158752.0' deviates from deterministic KPIs by >5%."
+        ],
+        "warnings": [
+            "Numerical claim '606728.0' not found in deterministic analytics.",
+            "Numerical claim '158752.0' not found in deterministic analytics."
+        ]
+    },
+    {
+        "insight": "North Region is Top Revenue Contributor. The North region accounts for the highest share of revenue among all regions, contributing $920,775.0.",
+        "status": "FAILED",
+        "confidence_score": 0.573,
+        "hallucination_score": 1.0,
+        "consistency_score": 0.8,
+        "coverage_score": 1.0,
+        "evidence_score": 0.333,
+        "supporting_metrics": [
+            "Segment: Region.North"
+        ],
+        "evidence_sources": [
+            "Segmentation Engine"
+        ],
+        "validation_notes": [
+            "Numerical claim '920775.0' deviates from deterministic KPIs by >5%."
+        ],
+        "warnings": [
+            "Numerical claim '920775.0' not found in deterministic analytics."
+        ]
+    },
+    {
+        "insight": "Electronics Category Drives Highest Revenue. The Electronics category is the leading revenue generator, totaling $1,213,764.0.",
+        "status": "FAILED",
+        "confidence_score": 0.573,
+        "hallucination_score": 1.0,
+        "consistency_score": 0.8,
+        "coverage_score": 1.0,
+        "evidence_score": 0.333,
+        "supporting_metrics": [
+            "Segment: Category.Electronics"
+        ],
+        "evidence_sources": [
+            "Segmentation Engine"
+        ],
+        "validation_notes": [
+            "Numerical claim '1213764.0' deviates from deterministic KPIs by >5%."
+        ],
+        "warnings": [
+            "Numerical claim '1213764.0' not found in deterministic analytics."
+        ]
+    },
+    {
+        "insight": "Financial Performance. The observed -68.23% revenue growth percentage indicates a severe and ongoing decline in financial performance, threatening overall profitability and sustainability.",
+        "status": "FAILED",
+        "confidence_score": 0.5,
+        "hallucination_score": 1.0,
+        "consistency_score": 1.0,
+        "coverage_score": 1.0,
+        "evidence_score": 0.0,
+        "supporting_metrics": [],
+        "evidence_sources": [],
+        "validation_notes": [],
+        "warnings": [
+            "Percentage claim '68.23%' not found in deterministic analytics.",
+            "Trend claim 'growing' contradicts actual trend 'decreasing'.",
+            "Trend claim 'declining' contradicts actual trend 'decreasing'."
+        ]
+    },
+    {
+        "insight": "Market Concentration. Over-reliance on the Consumer segment, contributing 42.28% of total revenue, makes the business vulnerable to shifts in this segment's purchasing behavior or market conditions.",
+        "status": "PASSED",
+        "confidence_score": 0.867,
+        "hallucination_score": 0.0,
+        "consistency_score": 1.0,
+        "coverage_score": 1.0,
+        "evidence_score": 0.667,
+        "supporting_metrics": [
+            "Numerical Stats.Units_Sold.Mean=42.175",
+            "Segment: Customer_Segment.Consumer"
+        ],
+        "evidence_sources": [
+            "Segmentation Engine",
+            "KPI Engine"
+        ],
+        "validation_notes": [],
+        "warnings": []
+    },
+    {
+        "insight": "Operational Efficiency/Product Portfolio. Underperforming products like \"Chair\" (revenue of $158,752.0) tie up capital in inventory, incur marketing costs with low returns, and reduce overall portfolio efficiency.",
+        "status": "FAILED",
+        "confidence_score": 0.44,
+        "hallucination_score": 1.0,
+        "consistency_score": 0.8,
+        "coverage_score": 1.0,
+        "evidence_score": 0.0,
+        "supporting_metrics": [],
+        "evidence_sources": [],
+        "validation_notes": [
+            "Numerical claim '158752.0' deviates from deterministic KPIs by >5%."
+        ],
+        "warnings": [
+            "Numerical claim '158752.0' not found in deterministic analytics."
+        ]
+    },
+    {
+        "insight": "Capitalize on Strong Consumer Segment Performance. The Consumer segment is the largest revenue contributor, presenting a clear opportunity to further strengthen engagement and loyalty within this high-value customer group.",
+        "status": "PASSED",
+        "confidence_score": 0.8,
+        "hallucination_score": 0.0,
+        "consistency_score": 1.0,
+        "coverage_score": 1.0,
+        "evidence_score": 0.5,
+        "supporting_metrics": [
+            "Segment: Customer_Segment.Consumer"
+        ],
+        "evidence_sources": [
+            "Segmentation Engine"
+        ],
+        "validation_notes": [],
+        "warnings": []
+    },
+    {
+        "insight": "Optimize \"Desk\" Product Sales and Profitability. \"Desk\" is the top-performing product by revenue, indicating strong market demand and an opportunity to maximize its potential through focused strategies.",
+        "status": "PASSED",
+        "confidence_score": 0.8,
+        "hallucination_score": 0.0,
+        "consistency_score": 1.0,
+        "coverage_score": 1.0,
+        "evidence_score": 0.5,
+        "supporting_metrics": [
+            "Segment: Product.Desk"
+        ],
+        "evidence_sources": [
+            "Segmentation Engine"
+        ],
+        "validation_notes": [],
+        "warnings": []
+    },
+    {
+        "insight": "Replicate Success of North Region in Other Geographies. The North region significantly outperforms other regions in revenue, suggesting successful strategies or market conditions that could be adapted and applied elsewhere.",
+        "status": "PASSED",
+        "confidence_score": 0.8,
+        "hallucination_score": 0.0,
+        "consistency_score": 1.0,
+        "coverage_score": 1.0,
+        "evidence_score": 0.5,
+        "supporting_metrics": [
+            "Segment: Region.North"
+        ],
+        "evidence_sources": [
+            "Segmentation Engine"
+        ],
+        "validation_notes": [],
+        "warnings": []
+    },
+    {
+        "insight": "Conduct a forensic analysis into the -68.23% revenue growth percentage.. The significant negative growth rate indicates a critical issue requiring urgent attention to prevent further financial deterioration.",
+        "status": "FAILED",
+        "confidence_score": 0.5,
+        "hallucination_score": 1.0,
+        "consistency_score": 1.0,
+        "coverage_score": 1.0,
+        "evidence_score": 0.0,
+        "supporting_metrics": [],
+        "evidence_sources": [],
+        "validation_notes": [],
+        "warnings": [
+            "Percentage claim '68.23%' not found in deterministic analytics.",
+            "Trend claim 'growing' contradicts actual trend 'decreasing'."
+        ]
+    },
+    {
+        "insight": "Investigate the identified extreme high values in Revenue.. Outliers can distort aggregated metrics and analyses, leading to inaccurate insights if not understood or addressed, potentially causing misinformed decisions.",
+        "status": "PASSED",
+        "confidence_score": 0.6,
+        "hallucination_score": 0.0,
+        "consistency_score": 1.0,
+        "coverage_score": 1.0,
+        "evidence_score": 0.0,
+        "supporting_metrics": [],
+        "evidence_sources": [
+            "Segmentation Engine"
+        ],
+        "validation_notes": [],
+        "warnings": []
+    },
+    {
+        "insight": "Develop a targeted engagement and retention strategy for the Consumer segment.. The Consumer segment represents the largest revenue contributor; it is crucial to maintain and grow this customer base to ensure business stability and growth.",
+        "status": "FAILED",
+        "confidence_score": 0.7,
+        "hallucination_score": 1.0,
+        "consistency_score": 1.0,
+        "coverage_score": 1.0,
+        "evidence_score": 0.5,
+        "supporting_metrics": [
+            "Segment: Customer_Segment.Consumer"
+        ],
+        "evidence_sources": [
+            "Segmentation Engine"
+        ],
+        "validation_notes": [],
+        "warnings": [
+            "Trend claim 'growing' contradicts actual trend 'decreasing'."
+        ]
+    },
+    {
+        "insight": "Evaluate the feasibility of expanding successful strategies from the North region to other underperforming regions.. The North region's strong performance ($920,775.0 revenue, 28.93% contribution) suggests replicable operational or marketing approaches that could boost other regions.",
+        "status": "FAILED",
+        "confidence_score": 0.48,
+        "hallucination_score": 1.0,
+        "consistency_score": 0.6000000000000001,
+        "coverage_score": 1.0,
+        "evidence_score": 0.25,
+        "supporting_metrics": [
+            "Segment: Region.North"
+        ],
+        "evidence_sources": [
+            "Segmentation Engine"
+        ],
+        "validation_notes": [
+            "Numerical claim '920775.0' deviates from deterministic KPIs by >5%.",
+            "Numerical claim '28.93' deviates from deterministic KPIs by >5%."
+        ],
+        "warnings": [
+            "Numerical claim '920775.0' not found in deterministic analytics.",
+            "Numerical claim '28.93' not found in deterministic analytics.",
+            "Percentage claim '28.93%' not found in deterministic analytics."
+        ]
+    },
+    {
+        "insight": "Task the BI team to generate a detailed report on the drivers of the -68.23% revenue growth percentage, breaking it down by product, category, region, and customer segment.. A clear understanding of the problem areas, enabling focused and data-driven intervention strategies to reverse the negative trend.",
+        "status": "FAILED",
+        "confidence_score": 0.5,
+        "hallucination_score": 1.0,
+        "consistency_score": 1.0,
+        "coverage_score": 1.0,
+        "evidence_score": 0.0,
+        "supporting_metrics": [],
+        "evidence_sources": [],
+        "validation_notes": [],
+        "warnings": [
+            "Percentage claim '68.23%' not found in deterministic analytics.",
+            "Trend claim 'growing' contradicts actual trend 'decreasing'."
+        ]
+    },
+    {
+        "insight": "Review the single extreme high value transaction in Revenue to determine if it is a data entry error or a legitimate, but unusual, sale.. Improved data integrity and more accurate financial reporting, ensuring that future analyses are based on reliable figures.",
+        "status": "PASSED",
+        "confidence_score": 0.6,
+        "hallucination_score": 0.0,
+        "consistency_score": 1.0,
+        "coverage_score": 1.0,
+        "evidence_score": 0.0,
+        "supporting_metrics": [],
+        "evidence_sources": [],
+        "validation_notes": [],
+        "warnings": []
+    },
+    {
+        "insight": "Initiate a review of the marketing and sales strategies currently employed for the \"Desk\" product and the \"Electronics\" category to identify best practices.. Identification of successful tactics that can be applied to other products or categories to boost performance and increase overall revenue.",
+        "status": "FAILED",
+        "confidence_score": 0.647,
+        "hallucination_score": 1.0,
+        "consistency_score": 0.6,
+        "coverage_score": 1.0,
+        "evidence_score": 0.667,
+        "supporting_metrics": [
+            "Segment: Category.Electronics",
+            "Segment: Product.Desk"
+        ],
+        "evidence_sources": [
+            "Segmentation Engine"
+        ],
+        "validation_notes": [
+            "Insight claims increase, but actual trend is 'decreasing'."
+        ],
+        "warnings": [
+            "Trend claim 'increasing' contradicts actual trend 'decreasing'."
+        ]
+    }
+]

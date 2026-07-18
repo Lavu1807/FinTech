@@ -1,0 +1,38 @@
+# Web Framework
+fastapi
+uvicorn[standard]
+python-multipart
+
+# Core Database & ORM
+sqlalchemy
+alembic
+psycopg2-binary
+
+# Validation & Settings
+pydantic
+pydantic-settings
+python-dotenv
+
+# Agent Framework & AI
+langchain
+langgraph
+langchain-google-genai
+
+# Data Processing
+pandas
+numpy
+
+# Utilities
+loguru
+
+# Visualization
+matplotlib
+seaborn
+
+# Testing
+pytest
+httpx
+
+# Reporting
+markdown2
+reportlab

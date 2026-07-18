@@ -1,0 +1,63 @@
+graph TD
+    %% User and API Layer
+    User((User)) -->|Uploads CSV / Requests| API[FastAPI API Layer]
+    
+    %% API to Orchestrator
+    API -->|Triggers Workflow| LG{LangGraph Orchestrator}
+    
+    %% Shared Resources
+    subgraph Core Infrastructure
+        FS[(FinSightState TypedDict)]
+        LLM[LLM Gateway]
+        PT[Prompt Templates]
+        Log[Logging Module]
+        Config[Configuration & Settings]
+    end
+    
+    %% Agent Pipeline
+    subgraph Multi-Agent Swarm
+        LG --> A_Auditor[Auditor Agent]
+        A_Auditor --> A_Planner[Planner Agent]
+        A_Planner --> A_Analytics[Business Analytics Agent]
+        A_Analytics --> A_Insights[Insights Agent]
+        A_Insights --> A_Validation[Validation Agent]
+        A_Validation --> A_Visualization[Visualization Agent]
+        A_Visualization --> A_Report[Report Agent]
+    end
+    
+    %% Connections to Shared State
+    A_Auditor -.->|Reads/Writes| FS
+    A_Planner -.->|Reads/Writes| FS
+    A_Analytics -.->|Reads/Writes| FS
+    A_Insights -.->|Reads/Writes| FS
+    A_Validation -.->|Reads/Writes| FS
+    A_Visualization -.->|Reads/Writes| FS
+    A_Report -.->|Reads/Writes| FS
+    
+    %% Connectivity to LLM Gateway
+    A_Auditor -.-> LLM
+    A_Planner -.-> LLM
+    A_Insights -.-> LLM
+    A_Validation -.-> LLM
+    
+    %% Final Outputs
+    subgraph Exports Folder
+        A_Report --> Out_Dash[Dashboard HTML]
+        A_Report --> Out_PDF[Executive PDF]
+        A_Report --> Out_Charts[PNG Charts]
+        A_Report --> Out_Val[Validation JSON]
+        A_Report --> Out_Anal[Analytics JSON]
+        A_Report --> Out_Trace[Trace UI & JSON]
+        A_Report --> Out_ZIP[FinSight_Report.zip]
+    end
+    
+    %% Styling
+    classDef agent fill:#1e293b,stroke:#3b82f6,stroke-width:2px,color:#f8fafc;
+    classDef state fill:#0f172a,stroke:#8b5cf6,stroke-width:2px,color:#f8fafc;
+    classDef io fill:#10b981,stroke:#047857,stroke-width:2px,color:#fff;
+    classDef api fill:#f59e0b,stroke:#b45309,stroke-width:2px,color:#fff;
+    
+    class A_Auditor,A_Planner,A_Analytics,A_Insights,A_Validation,A_Visualization,A_Report agent;
+    class FS,LLM,PT,Log,Config state;
+    class Out_Dash,Out_PDF,Out_Charts,Out_Val,Out_Anal,Out_Trace,Out_ZIP io;
+    class API,LG api;

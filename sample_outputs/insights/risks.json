@@ -1,0 +1,32 @@
+[
+    {
+        "risk_type": "Financial Performance",
+        "severity": "Critical",
+        "likelihood": "High",
+        "business_impact": "The observed -68.23% revenue growth percentage indicates a severe and ongoing decline in financial performance, threatening overall profitability and sustainability.",
+        "mitigation": "Implement robust sales performance monitoring, conduct root cause analysis, and develop recovery strategies.",
+        "recommended_action": "Initiate an immediate deep dive into the factors driving the -68.23% growth percentage in revenue.",
+        "supporting_evidence": "Overall Trend: Decreasing, Growth Percentage: -68.23%",
+        "confidence": 1.0
+    },
+    {
+        "risk_type": "Market Concentration",
+        "severity": "High",
+        "likelihood": "Medium",
+        "business_impact": "Over-reliance on the Consumer segment, contributing 42.28% of total revenue, makes the business vulnerable to shifts in this segment's purchasing behavior or market conditions.",
+        "mitigation": "Diversify marketing efforts, explore new customer acquisition strategies, and enhance offerings for other segments.",
+        "recommended_action": "Develop targeted strategies to grow revenue contributions from the Corporate and Small Business segments to mitigate concentration risk.",
+        "supporting_evidence": "Customer_Segment: Top Performers: {Consumer: 1345534.0}, Largest Contributor %: 42.27512667293578",
+        "confidence": 0.9
+    },
+    {
+        "risk_type": "Operational Efficiency/Product Portfolio",
+        "severity": "Medium",
+        "likelihood": "High",
+        "business_impact": "Underperforming products like \"Chair\" (revenue of $158,752.0) tie up capital in inventory, incur marketing costs with low returns, and reduce overall portfolio efficiency.",
+        "mitigation": "Review product lifecycle, optimize inventory, and consider product discontinuation or repositioning.",
+        "recommended_action": "Conduct a profitability analysis for bottom-performing products such as \"Chair\" and \"Table\" (revenue $159,226.0) to assess viability and inform future product strategy.",
+        "supporting_evidence": "Product: Bottom Performers: {Chair: 158752.0, Table: 159226.0}",
+        "confidence": 0.95
+    }
+]

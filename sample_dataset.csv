@@ -1,0 +1,11 @@
+Date,Region,Product_Category,Revenue,Units_Sold,Profit_Margin
+2023-01-01,North America,Electronics,15000,150,0.25
+2023-01-15,Europe,Clothing,8000,400,0.40
+2023-02-01,Asia,Electronics,22000,220,0.22
+2023-02-14,North America,Home Goods,12000,300,0.35
+2023-03-05,Europe,Electronics,18000,180,0.28
+2023-03-20,Asia,Clothing,9500,475,0.42
+2023-04-10,North America,Electronics,16500,165,0.24
+2023-04-25,Europe,Home Goods,13000,325,0.33
+2023-05-12,Asia,Electronics,24000,240,0.21
+2023-05-28,North America,Clothing,8500,425,0.38

@@ -1,0 +1,210 @@
+/* FinSight AI — Enterprise Report Stylesheet */
+:root {
+    --primary: #1a365d;
+    --primary-light: #2b6cb0;
+    --accent: #38a169;
+    --danger: #e53e3e;
+    --warning: #d69e2e;
+    --text: #2d3748;
+    --text-muted: #718096;
+    --bg: #f7fafc;
+    --surface: #ffffff;
+    --border: #e2e8f0;
+    --hover: #edf2f7;
+    --sidebar-width: 260px;
+    --font: 'Segoe UI', -apple-system, BlinkMacSystemFont, Roboto, sans-serif;
+}
+
+/* === Layout === */
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+    font-family: var(--font);
+    line-height: 1.7;
+    color: var(--text);
+    background: var(--bg);
+    display: flex;
+}
+
+/* === Sidebar Navigation === */
+.sidebar {
+    position: fixed;
+    top: 0; left: 0;
+    width: var(--sidebar-width);
+    height: 100vh;
+    background: var(--primary);
+    color: #ffffff;
+    padding: 2rem 1rem;
+    overflow-y: auto;
+    z-index: 100;
+}
+
+.sidebar h3 {
+    font-size: 1rem;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: rgba(255,255,255,0.6);
+    margin-bottom: 1rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 1px solid rgba(255,255,255,0.15);
+}
+
+.sidebar a {
+    display: block;
+    color: rgba(255,255,255,0.85);
+    text-decoration: none;
+    padding: 0.5rem 0.75rem;
+    border-radius: 6px;
+    font-size: 0.9rem;
+    margin-bottom: 0.25rem;
+    transition: all 0.2s;
+}
+
+.sidebar a:hover {
+    background: rgba(255,255,255,0.12);
+    color: #ffffff;
+}
+
+/* === Main Content === */
+.report-container {
+    margin-left: var(--sidebar-width);
+    max-width: 960px;
+    padding: 3rem;
+    background: var(--surface);
+    min-height: 100vh;
+    box-shadow: 0 0 40px rgba(0,0,0,0.04);
+}
+
+/* === Typography === */
+h1 {
+    font-size: 2.2rem;
+    color: var(--primary);
+    border-bottom: 3px solid var(--primary);
+    padding-bottom: 0.5rem;
+    margin-bottom: 1.5rem;
+}
+
+h2 {
+    font-size: 1.5rem;
+    color: var(--primary);
+    border-bottom: 1px solid var(--border);
+    padding: 0.75rem 0 0.4rem;
+    margin-top: 2.5rem;
+    margin-bottom: 1rem;
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+h2:hover { color: var(--primary-light); }
+
+h2::after {
+    content: '▾';
+    font-size: 1.2rem;
+    color: var(--text-muted);
+    transition: transform 0.3s;
+}
+
+h2.collapsed::after { transform: rotate(-90deg); }
+
+h3 { font-size: 1.15rem; color: var(--primary-light); margin-top: 1.5rem; margin-bottom: 0.75rem; }
+h4 { font-size: 1rem; color: var(--text); margin-top: 1rem; margin-bottom: 0.5rem; }
+
+p { margin-bottom: 0.75rem; }
+hr { border: 0; border-top: 1px solid var(--border); margin: 2rem 0; }
+
+/* === Lists === */
+ul { padding-left: 1.5rem; margin-bottom: 1rem; }
+li { margin-bottom: 0.4rem; }
+strong { color: #1a202c; }
+
+/* === Tables === */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 1rem 0 1.5rem;
+    font-size: 0.92rem;
+}
+
+th, td {
+    padding: 0.65rem 0.8rem;
+    border: 1px solid var(--border);
+    text-align: left;
+}
+
+th {
+    background: var(--primary);
+    color: #ffffff;
+    font-weight: 600;
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    letter-spacing: 0.03em;
+}
+
+tr:nth-child(even) { background: var(--hover); }
+tr:hover { background: #e2e8f0; }
+
+/* === Status Badges === */
+.badge {
+    display: inline-block;
+    padding: 0.2rem 0.6rem;
+    border-radius: 12px;
+    font-size: 0.78rem;
+    font-weight: 600;
+    text-transform: uppercase;
+}
+.badge-passed { background: #c6f6d5; color: #276749; }
+.badge-failed { background: #fed7d7; color: #9b2c2c; }
+.badge-warning { background: #fefcbf; color: #975a16; }
+
+/* === Charts === */
+img.chart-embed {
+    max-width: 100%;
+    height: auto;
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    margin: 1rem 0;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+}
+
+/* === Collapsible Sections === */
+.section-content {
+    transition: max-height 0.3s ease-out;
+    overflow: hidden;
+}
+
+.section-content.collapsed {
+    display: none;
+}
+
+/* === Code === */
+code {
+    background: var(--hover);
+    padding: 0.15em 0.4em;
+    border-radius: 3px;
+    font-size: 0.88em;
+    color: var(--primary-light);
+}
+
+/* === Print === */
+@media print {
+    body { display: block; }
+    .sidebar { display: none; }
+    .report-container {
+        margin-left: 0;
+        box-shadow: none;
+        padding: 1rem;
+        max-width: 100%;
+    }
+    h2::after { display: none; }
+    .section-content.collapsed { display: block !important; }
+    table { page-break-inside: avoid; }
+    h2 { page-break-after: avoid; }
+}
+
+/* === Responsive === */
+@media (max-width: 768px) {
+    .sidebar { display: none; }
+    .report-container { margin-left: 0; padding: 1.5rem; }
+}

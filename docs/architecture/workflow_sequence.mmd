@@ -1,0 +1,60 @@
+sequenceDiagram
+    participant User
+    participant API as FastAPI
+    participant Orchestrator as LangGraph
+    participant State as FinSightState
+    participant Auditor as Auditor Agent
+    participant Planner as Planner Agent
+    participant Analytics as Analytics Agent
+    participant Insights as Insights Agent
+    participant Validation as Validation Agent
+    participant Viz as Visualization Agent
+    participant Report as Report Agent
+    participant LLM as LLM Gateway
+
+    User->>API: POST /api/v1/upload (CSV)
+    API->>State: Initialize FinSightState
+    API->>Orchestrator: Run Workflow
+    
+    Orchestrator->>Auditor: Execute Node
+    Auditor->>LLM: Identify Domain & Profile
+    LLM-->>Auditor: Return JSON Profile
+    Auditor->>State: Update Dataset Profile
+    
+    Orchestrator->>Planner: Execute Node
+    Planner->>State: Read Profile
+    Planner->>LLM: Generate Analytical Roadmap
+    LLM-->>Planner: Structured JSON Plan
+    Planner->>State: Update Workflow Tracking
+    
+    Orchestrator->>Analytics: Execute Node
+    Analytics->>State: Read Plan & Dataset
+    Analytics->>Analytics: Compute KPIs & Stats
+    Analytics->>State: Update Business Analytics
+    
+    Orchestrator->>Insights: Execute Node
+    Insights->>State: Read Analytics
+    Insights->>LLM: Generate Strategic Summary
+    LLM-->>Insights: Executive Summary & Risks
+    Insights->>State: Update AI Insights
+    
+    Orchestrator->>Validation: Execute Node
+    Validation->>State: Read Insights & Dataset
+    Validation->>LLM: Fact-Check Claims
+    LLM-->>Validation: Hallucination Scores
+    Validation->>State: Update Validation Results
+    
+    Orchestrator->>Viz: Execute Node
+    Viz->>State: Read Analytics & Validation
+    Viz->>Viz: Generate Matplotlib PNGs
+    Viz->>State: Update Generated Charts
+    
+    Orchestrator->>Report: Execute Node
+    Report->>State: Read All Graph Data
+    Report->>Report: Build PDF, HTML Dashboard
+    Report->>Report: Export JSON Traces
+    Report->>Report: Zip Artifacts
+    Report->>State: Update Exports Paths
+    
+    Orchestrator-->>API: Workflow Complete
+    API-->>User: Return HTTP 200 (Result Payload)
