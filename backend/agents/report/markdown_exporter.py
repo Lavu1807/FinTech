@@ -1,6 +1,7 @@
 """
 Generates the core Markdown report from the FinSightState using Jinja2 templates.
 """
+
 import os
 from datetime import datetime, timezone
 from typing import Dict
@@ -24,13 +25,11 @@ def generate_markdown(state: FinSightState, filename: str = "dataset") -> str:
     now = datetime.now(timezone.utc).strftime("%Y-%m-%d %H:%M:%S UTC")
 
     # Setup Jinja2 Environment
-    template_dir = os.path.join(os.path.dirname(__file__), 'templates')
+    template_dir = os.path.join(os.path.dirname(__file__), "templates")
     env = Environment(
-        loader=FileSystemLoader(template_dir),
-        trim_blocks=True,
-        lstrip_blocks=True
+        loader=FileSystemLoader(template_dir), trim_blocks=True, lstrip_blocks=True
     )
-    template = env.get_template('executive.md')
+    template = env.get_template("executive.md")
 
     # Extract state sections
     dataset_info = state.get("dataset_info", {})
@@ -67,7 +66,7 @@ def generate_markdown(state: FinSightState, filename: str = "dataset") -> str:
         dataset_risks=dataset_risks,
         agent_logs=agent_logs,
         timeline=timeline,
-        column_types=column_types
+        column_types=column_types,
     )
 
     return md_content

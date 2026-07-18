@@ -1,6 +1,7 @@
 """
 AI Insight Agent LangGraph Node.
 """
+
 import time
 from datetime import datetime, timezone
 from typing import Dict, Any
@@ -13,7 +14,10 @@ from backend.utils.logger import logger
 from .schemas import InsightOutput
 from .context_builder import build_xml_context
 from .prompt_builder import build_insight_prompt
-from .recommendation_engine import process_recommendations, calculate_deterministic_confidence
+from .recommendation_engine import (
+    process_recommendations,
+    calculate_deterministic_confidence,
+)
 from .exporter import export_insights
 from .utils import hash_analytics
 
@@ -28,11 +32,21 @@ def insight_node(state: FinSightState) -> Dict[str, Any]:
     analytics = state.get("business_analytics", {})
     if not analytics:
         logger.warning(f"{agent_name}: No business analytics found. Skipping.")
-        return {"agent_logs": [{
-            "agent_name": agent_name, "status": "FAILED", "timestamp": datetime.now(timezone.utc),
-            "message": "Missing analytics context.", "provider_used": "None",
-            "llm_calls": 0, "estimated_tokens": 0, "estimated_cost": 0.0, "warnings": []
-        }]}
+        return {
+            "agent_logs": [
+                {
+                    "agent_name": agent_name,
+                    "status": "FAILED",
+                    "timestamp": datetime.now(timezone.utc),
+                    "message": "Missing analytics context.",
+                    "provider_used": "None",
+                    "llm_calls": 0,
+                    "estimated_tokens": 0,
+                    "estimated_cost": 0.0,
+                    "warnings": [],
+                }
+            ]
+        }
 
     # Generate Cache Key
     cache_key = hash_analytics(analytics, PROMPT_VERSION)
@@ -58,7 +72,7 @@ def insight_node(state: FinSightState) -> Dict[str, Any]:
                 prompt=prompt,
                 output_schema=InsightOutput,
                 calling_agent=agent_name,
-                temperature=0.3
+                temperature=0.3,
             )
 
             if not gateway_response:
@@ -77,10 +91,10 @@ def insight_node(state: FinSightState) -> Dict[str, Any]:
             llm_output.confidence = deterministic_conf
 
             # Save Cache
-            CacheManager.save(cache_key, {
-                "data": llm_output.model_dump(),
-                "prompt_version": PROMPT_VERSION
-            })
+            CacheManager.save(
+                cache_key,
+                {"data": llm_output.model_dump(), "prompt_version": PROMPT_VERSION},
+            )
 
         except Exception as e:
             logger.error(f"{agent_name} failed: {str(e)}")
@@ -93,7 +107,7 @@ def insight_node(state: FinSightState) -> Dict[str, Any]:
                 recommendations=[],
                 next_best_actions=[],
                 data_quality_observations=["Insufficient evidence."],
-                confidence=0.0
+                confidence=0.0,
             )
             provider = "Fallback"
             est_tokens = 0
@@ -107,11 +121,15 @@ def insight_node(state: FinSightState) -> Dict[str, Any]:
     execution_duration = time.time() - start_time
     total_tokens = execution_metadata.get("total_tokens", 0) + est_tokens
     total_cost = execution_metadata.get("estimated_llm_cost", 0.0) + est_cost
-    total_llm = execution_metadata.get("total_llm_calls", 0) + (0 if provider == "Cache" else 1)
+    total_llm = execution_metadata.get("total_llm_calls", 0) + (
+        0 if provider == "Cache" else 1
+    )
 
     insight_count = (
-        len(llm_output.key_findings) + len(llm_output.business_risks)
-        + len(llm_output.business_opportunities) + len(llm_output.recommendations)
+        len(llm_output.key_findings)
+        + len(llm_output.business_risks)
+        + len(llm_output.business_opportunities)
+        + len(llm_output.recommendations)
         + len(llm_output.next_best_actions)
     )
 
@@ -127,7 +145,7 @@ def insight_node(state: FinSightState) -> Dict[str, Any]:
         "llm_calls": 0 if provider == "Cache" else 1,
         "estimated_tokens": est_tokens,
         "estimated_cost": est_cost,
-        "warnings": []
+        "warnings": [],
     }
 
     workflow_tracking = state.get("workflow_tracking", {})
@@ -144,13 +162,14 @@ def insight_node(state: FinSightState) -> Dict[str, Any]:
             "total_tokens": total_tokens,
             "latency": execution_duration,
             "estimated_llm_cost": total_cost,
-            "total_llm_calls": total_llm
+            "total_llm_calls": total_llm,
         },
         "workflow_tracking": {
             **workflow_tracking,
             "current_agent": agent_name,
-            "completed_agents": workflow_tracking.get("completed_agents", []) + [agent_name],
-            "execution_time": execution_duration
+            "completed_agents": workflow_tracking.get("completed_agents", [])
+            + [agent_name],
+            "execution_time": execution_duration,
         },
-        "agent_logs": [log]
+        "agent_logs": [log],
     }

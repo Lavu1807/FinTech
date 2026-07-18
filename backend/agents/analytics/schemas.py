@@ -1,8 +1,10 @@
 """
 Pydantic schemas for Advanced Analytics Agent.
 """
+
 from pydantic import BaseModel
 from typing import Dict, Any, List
+
 
 class AnalyticsResult(BaseModel):
     calculated_kpis: Dict[str, Any]

@@ -2,6 +2,7 @@
 Validation Agent LangGraph Node.
 Orchestrates the deterministic Strategy Pattern registry.
 """
+
 import time
 from datetime import datetime, timezone
 from typing import Dict, Any, List
@@ -68,7 +69,7 @@ def validation_node(state: FinSightState) -> Dict[str, Any]:
     """Main execution block for Validation Agent."""
     start_time = time.time()
     agent_name = "Validation Agent"
-    
+
     insights = _extract_insights(state)
     if not insights:
         logger.info(f"{agent_name}: No insights found to validate.")
@@ -78,38 +79,40 @@ def validation_node(state: FinSightState) -> Dict[str, Any]:
                 "overall_status": "PASSED",
                 "average_confidence": 0.0,
                 "hallucination_rate": 0.0,
-                "unsupported_claims": []
+                "unsupported_claims": [],
             },
-            "agent_logs": [{
-                "agent_name": agent_name,
-                "status": "COMPLETED",
-                "timestamp": datetime.now(timezone.utc),
-                "message": "No insights to validate.",
-                "provider_used": "Deterministic",
-                "llm_calls": 0,
-                "estimated_tokens": 0,
-                "estimated_cost": 0.0,
-                "warnings": []
-            }]
+            "agent_logs": [
+                {
+                    "agent_name": agent_name,
+                    "status": "COMPLETED",
+                    "timestamp": datetime.now(timezone.utc),
+                    "message": "No insights to validate.",
+                    "provider_used": "Deterministic",
+                    "llm_calls": 0,
+                    "estimated_tokens": 0,
+                    "estimated_cost": 0.0,
+                    "warnings": [],
+                }
+            ],
         }
-        
+
     # Build Strategy Registry
     registry = ValidatorRegistry()
     registry.register(PrivacyValidator())
     registry.register(QualityValidator())
     registry.register(NumericalValidator())
     registry.register(TrendValidator())
-    
+
     # Run Validations
     scores = registry.validate_all(insights, state)
-    
+
     # Export Validation Output
     workflow_id = state.get("execution_metadata", {}).get("workflow_id", "unknown")
     export_validation_report(scores, workflow_id)
-    
+
     # Compute Summary
     summary = get_summary(scores)
-    
+
     # Telemetry
     log: AgentLog = {
         "agent_name": agent_name,
@@ -124,24 +127,27 @@ def validation_node(state: FinSightState) -> Dict[str, Any]:
         "llm_calls": 0,
         "estimated_tokens": 0,
         "estimated_cost": 0.0,
-        "warnings": [f"Failed validations: {summary.failed}"] if summary.failed > 0 else []
+        "warnings": (
+            [f"Failed validations: {summary.failed}"] if summary.failed > 0 else []
+        ),
     }
-    
+
     workflow_tracking = state.get("workflow_tracking", {})
-    
+
     return {
         "validation": {
             "validation_results": [s.model_dump() for s in scores],
             "overall_status": summary.overall_status,
             "average_confidence": summary.average_confidence,
             "hallucination_rate": summary.hallucination_rate,
-            "unsupported_claims": summary.unsupported_claims
+            "unsupported_claims": summary.unsupported_claims,
         },
         "workflow_tracking": {
             **workflow_tracking,
             "current_agent": agent_name,
-            "completed_agents": workflow_tracking.get("completed_agents", []) + [agent_name],
-            "execution_time": time.time() - start_time
+            "completed_agents": workflow_tracking.get("completed_agents", [])
+            + [agent_name],
+            "execution_time": time.time() - start_time,
         },
-        "agent_logs": [log]
+        "agent_logs": [log],
     }

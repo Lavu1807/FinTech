@@ -2,6 +2,7 @@
 Evidence Matcher for Validation Agent.
 Cross-references insight text against deterministic analytics to find supporting evidence.
 """
+
 import re
 from typing import List, Dict, Any, Tuple
 from backend.state.state import FinSightState
@@ -24,7 +25,7 @@ def _flatten_kpis(kpis: Dict[str, Any], prefix: str = "") -> Dict[str, float]:
 
 def _extract_numbers(text: str) -> List[float]:
     """Extract all numeric values from a text string."""
-    raw = re.findall(r'[-+]?\d*\.?\d+', text.replace(",", ""))
+    raw = re.findall(r"[-+]?\d*\.?\d+", text.replace(",", ""))
     values = []
     for r in raw:
         try:
@@ -37,7 +38,9 @@ def _extract_numbers(text: str) -> List[float]:
     return values
 
 
-def match_evidence(insight: str, state: FinSightState) -> Tuple[List[str], List[str], float]:
+def match_evidence(
+    insight: str, state: FinSightState
+) -> Tuple[List[str], List[str], float]:
     """
     Searches all deterministic sources for evidence supporting the insight.
     Returns (supporting_metrics, evidence_sources, evidence_score).

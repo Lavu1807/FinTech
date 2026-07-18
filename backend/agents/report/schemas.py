@@ -1,8 +1,10 @@
 """
 Pydantic schemas for the Report Generator Agent.
 """
+
 from pydantic import BaseModel
 from typing import Optional, Dict, Any
+
 
 class ReportOutput(BaseModel):
     executive_summary: str

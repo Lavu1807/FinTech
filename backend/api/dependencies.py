@@ -1,8 +1,10 @@
 """
 FastAPI Dependencies for dependency injection.
 """
+
 from typing import Generator
 from backend.database.session import SessionLocal
+
 
 def get_db() -> Generator:
     """

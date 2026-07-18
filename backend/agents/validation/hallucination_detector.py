@@ -2,18 +2,21 @@
 Hallucination Detector for Validation Agent.
 Identifies claims that lack any deterministic evidence.
 """
+
 import re
 from typing import List, Tuple
 from backend.state.state import FinSightState
 from .evidence_matcher import _flatten_kpis, _extract_numbers
 
 
-def detect_hallucinations(insight: str, state: FinSightState) -> Tuple[float, List[str]]:
+def detect_hallucinations(
+    insight: str, state: FinSightState
+) -> Tuple[float, List[str]]:
     """
     Scans an insight narrative for numerical, percentage, and trend claims that
     cannot be matched to any deterministic source from the Analytics Agent.
 
-    This algorithm isolates generative math hallucinations by extracting numbers 
+    This algorithm isolates generative math hallucinations by extracting numbers
     via RegEx (`_extract_numbers`) and cross-referencing them against the flattened
     `state["business_analytics"]` dictionary with a 5% fuzziness tolerance.
 
@@ -22,7 +25,7 @@ def detect_hallucinations(insight: str, state: FinSightState) -> Tuple[float, Li
         state (FinSightState): The current graph state containing deterministic metrics.
 
     Returns:
-        Tuple[float, List[str]]: 
+        Tuple[float, List[str]]:
             - A float (0.0 to 1.0) representing the hallucination ratio.
             - A list of string descriptions for every unsupported claim found.
     """
@@ -46,27 +49,27 @@ def detect_hallucinations(insight: str, state: FinSightState) -> Tuple[float, Li
     for num in numbers:
         checks += 1
         matched = any(
-            abs(num - v) <= abs(v * 0.05)
-            for v in all_values.values()
-            if v != 0
+            abs(num - v) <= abs(v * 0.05) for v in all_values.values() if v != 0
         )
         if not matched:
             failures += 1
-            unsupported.append(f"Numerical claim '{num}' not found in deterministic analytics.")
+            unsupported.append(
+                f"Numerical claim '{num}' not found in deterministic analytics."
+            )
 
     # 2. Percentage claim validation
-    pct_matches = re.findall(r'(\d+(?:\.\d+)?)\s*%', insight)
+    pct_matches = re.findall(r"(\d+(?:\.\d+)?)\s*%", insight)
     for pct_str in pct_matches:
         checks += 1
         pct_val = float(pct_str)
         matched = any(
-            abs(pct_val - v) <= abs(v * 0.05)
-            for v in all_values.values()
-            if v != 0
+            abs(pct_val - v) <= abs(v * 0.05) for v in all_values.values() if v != 0
         )
         if not matched:
             failures += 1
-            unsupported.append(f"Percentage claim '{pct_val}%' not found in deterministic analytics.")
+            unsupported.append(
+                f"Percentage claim '{pct_val}%' not found in deterministic analytics."
+            )
 
     # 3. Trend direction claim validation
     trend_keywords = {

@@ -2,6 +2,7 @@
 Context Builder for AI Insight Agent.
 Extracts deterministic state and formats into structured sections for the LLM prompt.
 """
+
 import json
 from typing import Dict
 from backend.state.state import FinSightState
@@ -21,14 +22,17 @@ def build_xml_context(state: FinSightState) -> Dict[str, str]:
     profile = state.get("dataset_profile", {}).get("overview", {})
 
     # 1. Dataset Summary
-    dataset_summary = json.dumps({
-        "filename": dataset_info.get("filename", "unknown"),
-        "category": dataset_info.get("dataset_category", "unknown"),
-        "business_domain": dataset_info.get("business_domain", "unknown"),
-        "rows": profile.get("rows", "unknown"),
-        "columns": profile.get("cols", "unknown"),
-        "memory_mb": profile.get("memory_mb", "unknown")
-    }, indent=2)
+    dataset_summary = json.dumps(
+        {
+            "filename": dataset_info.get("filename", "unknown"),
+            "category": dataset_info.get("dataset_category", "unknown"),
+            "business_domain": dataset_info.get("business_domain", "unknown"),
+            "rows": profile.get("rows", "unknown"),
+            "columns": profile.get("cols", "unknown"),
+            "memory_mb": profile.get("memory_mb", "unknown"),
+        },
+        indent=2,
+    )
 
     # 2. KPIs
     kpis = json.dumps(analytics.get("calculated_kpis", {}), indent=2)
@@ -46,18 +50,26 @@ def build_xml_context(state: FinSightState) -> Dict[str, str]:
     anomalies = json.dumps(analytics.get("anomaly_summary", []), indent=2)
 
     # 7. Data Quality
-    quality = json.dumps({
-        "quality_grade": quality_metrics.get("quality_grade", "N/A"),
-        "scores": quality_metrics.get("scores", {}),
-        "risks": dataset_risks
-    }, indent=2)
+    quality = json.dumps(
+        {
+            "quality_grade": quality_metrics.get("quality_grade", "N/A"),
+            "scores": quality_metrics.get("scores", {}),
+            "risks": dataset_risks,
+        },
+        indent=2,
+    )
 
     # 8. Planner Reasoning
-    planner = json.dumps({
-        "planner_reasoning": workflow.get("planner_reasoning", "No planner reasoning available."),
-        "planner_confidence": workflow.get("planner_confidence", "N/A"),
-        "analysis_plan": workflow.get("analysis_plan", [])
-    }, indent=2)
+    planner = json.dumps(
+        {
+            "planner_reasoning": workflow.get(
+                "planner_reasoning", "No planner reasoning available."
+            ),
+            "planner_confidence": workflow.get("planner_confidence", "N/A"),
+            "analysis_plan": workflow.get("analysis_plan", []),
+        },
+        indent=2,
+    )
 
     # 9. Business Domain
     domain = dataset_info.get("business_domain", "Unknown")
@@ -75,5 +87,5 @@ def build_xml_context(state: FinSightState) -> Dict[str, str]:
         "data_quality": quality,
         "planner_reasoning": planner,
         "business_domain": domain,
-        "risk_level": risk_level
+        "risk_level": risk_level,
     }

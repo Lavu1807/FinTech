@@ -5,7 +5,8 @@ from dotenv import load_dotenv
 # Load .env so settings get the API key before main.py is imported
 load_dotenv()
 
-from backend.main import app
+from backend.main import app  # noqa: E402
+
 
 @pytest.fixture
 def client():

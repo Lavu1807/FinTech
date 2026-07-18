@@ -2,9 +2,11 @@ from typing import List, Optional
 from datetime import datetime
 from pydantic import BaseModel
 
+
 class TimelineEvent(BaseModel):
     timestamp: datetime
     event_name: str
+
 
 class AgentExecution(BaseModel):
     agent_name: str
@@ -19,6 +21,7 @@ class AgentExecution(BaseModel):
     warnings: List[str]
     summary_message: str
 
+
 class ExecutionMetrics(BaseModel):
     total_runtime: float
     average_agent_runtime: float
@@ -28,6 +31,7 @@ class ExecutionMetrics(BaseModel):
     total_estimated_cost: float
     total_tokens: int
     average_tokens_per_agent: float
+
 
 class WorkflowSummary(BaseModel):
     workflow_status: str
@@ -42,6 +46,7 @@ class WorkflowSummary(BaseModel):
     completed_agents: List[str]
     failed_agents: List[str]
     warnings_count: int
+
 
 class WorkflowDashboard(BaseModel):
     summary: WorkflowSummary

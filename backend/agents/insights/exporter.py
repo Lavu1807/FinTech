@@ -2,6 +2,7 @@
 Exporter for AI Insight Agent.
 Outputs structured JSON files to exports/insights/.
 """
+
 from datetime import datetime, timezone
 from typing import List
 from .schemas import InsightOutput
@@ -10,6 +11,7 @@ from .schemas import InsightOutput
 def export_insights(result: InsightOutput, workflow_id: str) -> List[str]:
     """Export all insight artifacts and return list of generated file paths."""
     from backend.services.artifact_manager import ArtifactManager
+
     artifact_mgr = ArtifactManager(workflow_id)
 
     exports = {
@@ -37,10 +39,12 @@ def export_insights(result: InsightOutput, workflow_id: str) -> List[str]:
         "recommendation_count": len(result.recommendations),
         "action_count": len(result.next_best_actions),
         "quality_observation_count": len(result.data_quality_observations),
-        "exported_files": generated_files
+        "exported_files": generated_files,
     }
-    
-    manifest_path = artifact_mgr.save_json("insights", "insight_manifest.json", manifest)
+
+    manifest_path = artifact_mgr.save_json(
+        "insights", "insight_manifest.json", manifest
+    )
     if manifest_path:
         generated_files.append(manifest_path)
 

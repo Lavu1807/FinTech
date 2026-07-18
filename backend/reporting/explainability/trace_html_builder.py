@@ -1,11 +1,14 @@
 from typing import Dict, Any
 
-def generate_trace_html(agent_trace: Dict[str, Any], workflow_timeline: Dict[str, Any], dataset_name: str) -> str:
+
+def generate_trace_html(
+    agent_trace: Dict[str, Any], workflow_timeline: Dict[str, Any], dataset_name: str
+) -> str:
     """
     Generates a standalone Trace.html page for the Workflow Trace.
     Provides a visual UI for the execution timeline, critical path, and agent metrics.
     """
-    
+
     # 1. CSS Styles
     css = """
     :root {
@@ -54,7 +57,7 @@ def generate_trace_html(agent_trace: Dict[str, Any], workflow_timeline: Dict[str
     summary = workflow_timeline.get("execution_summary", {})
     timeline = workflow_timeline.get("timeline", [])
     critical_path = workflow_timeline.get("critical_path", [])
-    
+
     # 3. Build HTML
     html = f"""<!DOCTYPE html>
 <html lang="en">
@@ -115,14 +118,14 @@ def generate_trace_html(agent_trace: Dict[str, Any], workflow_timeline: Dict[str
         <h3>Agent Execution Timeline</h3>
         <div class="timeline">
     """
-    
+
     for node in timeline:
         status_class = "FAILED" if node.get("status") == "FAILED" else "SUCCESS"
         warnings_html = ""
         if node.get("warnings"):
             warn_list = "<br/>".join(node["warnings"])
             warnings_html = f"<div class='node-warnings'>⚠️ {warn_list}</div>"
-            
+
         html += f"""
             <div class="node">
                 <div class="node-header">
@@ -139,7 +142,7 @@ def generate_trace_html(agent_trace: Dict[str, Any], workflow_timeline: Dict[str
                 {warnings_html}
             </div>
         """
-        
+
     html += """
         </div>
     </div>

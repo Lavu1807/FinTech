@@ -1,12 +1,15 @@
 """
 Manifest generator for the Report Agent.
 """
+
 from typing import Dict, Any, List
 from datetime import datetime, timezone
 from backend.state.state import FinSightState
 
 
-def generate_manifest(state: FinSightState, exported_files: List[str]) -> Dict[str, Any]:
+def generate_manifest(
+    state: FinSightState, exported_files: List[str]
+) -> Dict[str, Any]:
     """Generate report_manifest.json with full workflow metadata."""
     meta = state.get("execution_metadata", {})
     workflow = state.get("workflow_tracking", {})
@@ -56,5 +59,5 @@ def generate_manifest(state: FinSightState, exported_files: List[str]) -> Dict[s
         "validation_status": validation.get("overall_status", "N/A"),
         "overall_confidence": validation.get("average_confidence", 0.0),
         "included_sections": sections,
-        "generated_files": exported_files
+        "generated_files": exported_files,
     }

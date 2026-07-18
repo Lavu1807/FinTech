@@ -6,7 +6,7 @@ def get_html_template(
     charts_content: str,
     narrative_content: str,
     timeline_content: str,
-    dataset_name: str
+    dataset_name: str,
 ) -> str:
     """Returns the master HTML5 template for the dashboard."""
     return f"""<!DOCTYPE html>

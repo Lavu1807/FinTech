@@ -2,6 +2,7 @@
 Prompt Builder for AI Insight Agent.
 Loads the prompt template and injects structured context sections.
 """
+
 from typing import Dict
 from backend.services.llm_gateway import load_prompt
 from .validators import validate_context_safety
@@ -20,6 +21,8 @@ def build_insight_prompt(context_dict: Dict[str, str]) -> str:
     prompt = prompt_template.format(**context_dict)
 
     if not validate_context_safety(prompt):
-        raise InsightPromptError("Prompt validation failed: Unsafe or raw data detected in context.")
+        raise InsightPromptError(
+            "Prompt validation failed: Unsafe or raw data detected in context."
+        )
 
     return prompt

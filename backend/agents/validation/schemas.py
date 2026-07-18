@@ -1,11 +1,14 @@
 """
 Pydantic schemas for the Validation Agent.
 """
+
 from pydantic import BaseModel, Field
 from typing import List
 
+
 class ValidationScore(BaseModel):
     """Validation result for one insight."""
+
     insight: str
     status: str = "PASSED"
     confidence_score: float = 1.0
@@ -18,8 +21,10 @@ class ValidationScore(BaseModel):
     validation_notes: List[str] = Field(default_factory=list)
     warnings: List[str] = Field(default_factory=list)
 
+
 class ValidationSummary(BaseModel):
     """Aggregate summary across all validated insights."""
+
     total_insights: int
     passed: int
     failed: int
@@ -30,7 +35,9 @@ class ValidationSummary(BaseModel):
     hallucination_rate: float
     unsupported_claims: List[str] = Field(default_factory=list)
 
+
 class ValidationReport(BaseModel):
     """Full validation report combining per-insight results and summary."""
+
     summary: ValidationSummary
     scores: List[ValidationScore]

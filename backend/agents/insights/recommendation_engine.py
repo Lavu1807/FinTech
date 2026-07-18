@@ -2,10 +2,10 @@
 Recommendation Engine for AI Insight Agent.
 Sorts recommendations by priority and calculates deterministic confidence override.
 """
+
 from typing import Any
 from backend.state.state import FinSightState
 from .schemas import InsightOutput
-
 
 # Priority ordering for sorting
 _PRIORITY_ORDER = {"Immediate": 0, "High": 1, "Medium": 2, "Low": 3}
@@ -13,7 +13,7 @@ _PRIORITY_ORDER = {"Immediate": 0, "High": 1, "Medium": 2, "Low": 3}
 
 def _sort_key(item: Any) -> int:
     """Extract priority sort key from any Pydantic model with a 'priority' field."""
-    priority = getattr(item, 'priority', 'Medium')
+    priority = getattr(item, "priority", "Medium")
     return _PRIORITY_ORDER.get(priority, 2)
 
 
@@ -25,13 +25,15 @@ def process_recommendations(insight: InsightOutput) -> InsightOutput:
     return insight
 
 
-def calculate_deterministic_confidence(insight: InsightOutput, state: FinSightState) -> float:
+def calculate_deterministic_confidence(
+    insight: InsightOutput, state: FinSightState
+) -> float:
     """
     Override the LLM's self-reported confidence with a deterministic calculation.
-    
+
     Factors:
     1. Planner confidence (25%)
-    2. Data quality score (25%)  
+    2. Data quality score (25%)
     3. Number of supporting metrics across all findings (25%)
     4. Validation readiness — presence of actionable outputs (25%)
     """
@@ -67,17 +69,24 @@ def calculate_deterministic_confidence(insight: InsightOutput, state: FinSightSt
         if o.supporting_metrics and o.supporting_metrics != "Insufficient evidence.":
             items_with_evidence += 1
     for rec in insight.recommendations:
-        if rec.supporting_metrics and rec.supporting_metrics != "Insufficient evidence.":
+        if (
+            rec.supporting_metrics
+            and rec.supporting_metrics != "Insufficient evidence."
+        ):
             items_with_evidence += 1
 
     metric_density = (items_with_evidence / total_items) if total_items > 0 else 0.5
 
     # 4. Validation readiness — are there actionable outputs?
-    readiness = 1.0 if (
-        len(insight.key_findings) >= 1
-        and len(insight.recommendations) >= 1
-        and len(insight.next_best_actions) >= 1
-    ) else 0.5
+    readiness = (
+        1.0
+        if (
+            len(insight.key_findings) >= 1
+            and len(insight.recommendations) >= 1
+            and len(insight.next_best_actions) >= 1
+        )
+        else 0.5
+    )
 
     # Weighted combination
     deterministic_conf = (
