@@ -16,7 +16,7 @@ from .manifest import generate_manifest
 
 def report_node(state: FinSightState) -> Dict[str, Any]:
     agent_name = "Report Generator Agent"
-    start_time = time.time()
+    time.time()
     
     filename = state.get("dataset_info", {}).get("filename", "unknown_dataset")
     base_name = filename.split('.')[0] if '.' in filename else filename

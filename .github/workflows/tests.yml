@@ -29,8 +29,9 @@ jobs:
         
     - name: Run Tests
       env:
-        GEMINI_API_KEY: "dummy-key-for-tests"
+        MISTRAL_API_KEY: "dummy-key-for-tests"
         APP_ENV: "testing"
+        PYTHONPATH: "."
       run: |
         pytest backend/tests/ --cov=backend --cov-report=xml
         

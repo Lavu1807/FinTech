@@ -105,7 +105,7 @@ class BusinessKPIStrategy(KPIStrategy):
         
         rev_col = get_revenue_col(df)
         qty_col = get_quantity_col(df)
-        discount_col = get_discount_col(df)
+        get_discount_col(df)
         profit_col = get_profit_col(df)
         cost_col = get_cost_col(df)
         cust_col = get_customer_id_col(df)

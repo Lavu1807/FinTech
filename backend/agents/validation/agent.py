@@ -105,7 +105,7 @@ def validation_node(state: FinSightState) -> Dict[str, Any]:
     
     # Export Validation Output
     workflow_id = state.get("execution_metadata", {}).get("workflow_id", "unknown")
-    export_dir = export_validation_report(scores, workflow_id)
+    export_validation_report(scores, workflow_id)
     
     # Compute Summary
     summary = get_summary(scores)

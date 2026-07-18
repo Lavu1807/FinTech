@@ -37,7 +37,7 @@ def generate_overview(df: pd.DataFrame, filename: str) -> DatasetOverview:
 def infer_semantic_type(series: pd.Series, name: str) -> str:
     """Heuristic-based semantic type inference."""
     name_lower = name.lower()
-    dtype_str = str(series.dtype)
+    str(series.dtype)
     
     if pd.api.types.is_datetime64_any_dtype(series):
         return "Date"
